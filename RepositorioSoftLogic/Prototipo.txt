@@ -1,0 +1,31 @@
+Login - Camila
+	cadastrarUsuario();
+	string usuario, string senha = usuario123;
+
+Menu - Camila
+
+	mostrarOpcoes();
+	imprimir Opcoes;
+		- Movimento (Cadastrar Prova / Editar/ Remover); 
+		- Consulta	(Relatorio)
+		- Ajuda (Mostrar documentação - como funciona)
+		- Sair
+
+		cadastrarProva (Lucas)
+			montarProva (montar 4 estaticas e poder montar opcional)
+			montarGabarito (objetivas e dissertativas)
+			montarQuestoes (Dissertativa e Objetiva)
+			montarAlternativas (A até C)
+			montarDissertativa
+
+		consultar (Rafael)
+			exibirQUestoes
+			exibir Alternativas
+			exibir Gabarito
+
+		ajuda (Arnaldo)
+			exibirFuncoesMetodos
+			passo-a-passo
+			
+		montar Programa (Arnaldo)
+			organizar a estrutura
