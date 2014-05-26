@@ -16,6 +16,14 @@ namespace Arnaldo
             int opcaoMenuAjuda = int.Parse(Console.ReadLine());
             //switch (opcaoMenuAjuda)
             //{
+            //    case 1:
+            //        AjudaCadastro();
+            //    case 2:
+            //        AjudaConsulta();
+            //    case 3:
+            //        MenuInicial();
+            //    default:
+            //        Console.WriteLine("ATENÇÃO! Opção Inválida");
             //}
             Console.ReadKey();
         }
