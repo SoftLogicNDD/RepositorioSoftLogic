@@ -10,6 +10,8 @@ namespace Arnaldo
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(" ===== AJUDA =====");
+
         }
     }
 }
