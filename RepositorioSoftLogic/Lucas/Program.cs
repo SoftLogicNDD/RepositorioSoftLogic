@@ -8,9 +8,11 @@ namespace Lucas
 {
     class Program
     {
-        public static int totalDeQuestoes ;
+        public static int totalDeQuestoes;
+        public static int questoesObjetivas=5;
+        public static int questoesDescritivas=5;
 
-        public static string [] CadastroDeEnunciadoDaProva(int questoesObjetivas,int questoesDescritivas)
+        public static string [] CadastroDeEnunciadoDaProva()
         {
            
              totalDeQuestoes = questoesDescritivas + questoesObjetivas;
@@ -90,7 +92,7 @@ namespace Lucas
 
         public static string[] CadastraAlternativasDaprova()
         {
-            string [] alternativas = new string[totalDeQuestoes];
+            string [] alternativas = new string[questoesObjetivas];
             Console.WriteLine("cadastro de alternativas:");
             char [] letras = new char[5];
              letras[0] = 'A';
@@ -98,11 +100,11 @@ namespace Lucas
              letras[2] = 'C';
              letras[3] = 'D';
              letras[4] = 'E';
-            for (int i = 0; i < totalDeQuestoes; i++)
+            for (int i = 0; i < questoesObjetivas; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    Console.WriteLine("digite a alternativa {0}",letras[j]);
+                    Console.WriteLine("digite a descrição da alternativa {0}, da questao :{1}",letras[j],i);
                     alternativas[i] = Console.ReadLine();
 
                 }
@@ -112,9 +114,20 @@ namespace Lucas
 
 
 
-        public static void GerarGabarito()
+        public static char [] GerarGabarito()
         {
+            Console.WriteLine("gabarito");
             
+            char [] alternativaCerta = new char[totalDeQuestoes];
+            for (int i = 0; i < totalDeQuestoes; i++)
+            {
+                Console.WriteLine("qual é a alternativa certa");
+                alternativaCerta[i] = Convert.ToChar(Console.ReadLine());
+
+
+            }
+
+            return alternativaCerta;
         }
 
         public static void GeraGabaritosDeProvasEstaticas()
@@ -242,7 +255,7 @@ namespace Lucas
         {
 
 
-            CadastroDeEnunciadoDaProva(5, 5);
+            CadastroDeEnunciadoDaProva();
             Console.ReadKey();
 
         }
