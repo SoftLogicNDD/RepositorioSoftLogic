@@ -10,9 +10,9 @@ namespace Arnaldo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(" ===== AJUDA =====\n");
+            Console.WriteLine(" ===== AJUDA =====");
             MostrarOpcoes();
-            Console.Write("Informe a opção desejada: ");
+            Console.Write("\nInforme a opção desejada: ");
             int opcaoMenuAjuda = int.Parse(Console.ReadLine());
             //switch (opcaoMenuAjuda)
             //{

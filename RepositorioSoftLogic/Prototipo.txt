@@ -16,7 +16,7 @@ Menu - Camila
 			montarProva (montar 4 estaticas e poder montar opcional)
 			montarGabarito (objetivas e dissertativas)
 			montarQuestoes (Dissertativa e Objetiva)
-			montarAlternativas (A até C)
+			montarAlternativas (A até E)
 			montarDissertativa
 
 		consultar (Rafael)
