@@ -8,18 +8,18 @@ namespace Lucas
 {
     class Program
     {
-        public static string [] GerarQuestoesParaProva(int questoesObjetivas,int questoesDescritivas)
+        public static int totalDeQuestoes ;
+
+        public static string [] CadastroDeEnunciadoDaProva(int questoesObjetivas,int questoesDescritivas)
         {
-            int totalQuestoes = questoesDescritivas + questoesObjetivas;
-            string [] objetivas = new string[questoesObjetivas];
-            string[] descritivas = new string[questoesDescritivas];
-            int totalDeQuestoes = questoesDescritivas + questoesObjetivas;
+           
+             totalDeQuestoes = questoesDescritivas + questoesObjetivas;
             string [] enunciadosDescritivas = new string[questoesDescritivas];
            string [] enunciadosObjetivas = new string[questoesObjetivas];
            string[] todasQuestoes = new string[totalDeQuestoes];
-            char [] alternativas = new char[5];
+            
 
-            if (questoesDescritivas>0)
+             if (questoesDescritivas>0)
             {
                 Console.WriteLine("cadastro de questoes descritivas");
                 for (int i = 0; i < questoesDescritivas; i++)
@@ -85,7 +85,32 @@ namespace Lucas
 
 
             return todasQuestoes;
+           
         }
+
+        public static string[] CadastraAlternativasDaprova()
+        {
+            string [] alternativas = new string[totalDeQuestoes];
+            Console.WriteLine("cadastro de alternativas:");
+            char [] letras = new char[5];
+             letras[0] = 'A';
+             letras[1] = 'B';
+             letras[2] = 'C';
+             letras[3] = 'D';
+             letras[4] = 'E';
+            for (int i = 0; i < totalDeQuestoes; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.WriteLine("digite a alternativa {0}",letras[j]);
+                    alternativas[i] = Console.ReadLine();
+
+                }
+            }
+            return alternativas;
+        }
+
+
 
         public static void GerarGabarito()
         {
@@ -217,7 +242,7 @@ namespace Lucas
         {
 
 
-            GerarQuestoesParaProva(5, 5);
+            CadastroDeEnunciadoDaProva(5, 5);
             Console.ReadKey();
 
         }
