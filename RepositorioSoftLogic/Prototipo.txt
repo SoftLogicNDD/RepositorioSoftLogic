@@ -27,6 +27,11 @@ Menu - Camila
 		ajuda (Arnaldo)
 			exibirFuncoesMetodos
 			passo-a-passo
-			
+
+		sobre (Arnaldo)
+			Mostrar nome dos desenvolvedores da equipe
+			Mostrar uma descricao do produto
+			Mostra o nome da empresa (SoftLogic)
+						
 		montar Programa (Arnaldo)
 			organizar a estrutura

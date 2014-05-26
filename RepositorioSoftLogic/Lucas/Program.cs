@@ -16,12 +16,12 @@ namespace Lucas
         {
            
              totalDeQuestoes = questoesDescritivas + questoesObjetivas;
-            string [] enunciadosDescritivas = new string[questoesDescritivas];
-           string [] enunciadosObjetivas = new string[questoesObjetivas];
+            string[] enunciadosDescritivas = new string[questoesDescritivas];
+            string[] enunciadosObjetivas = new string[questoesObjetivas];
            string[] todasQuestoes = new string[totalDeQuestoes];
             
 
-             if (questoesDescritivas>0)
+            if (questoesDescritivas > 0)
             {
                 Console.WriteLine("cadastro de questoes descritivas");
                 for (int i = 0; i < questoesDescritivas; i++)
@@ -47,27 +47,27 @@ namespace Lucas
             {
                 Console.WriteLine("não há questões objetivas para cadastro...");
             }
-            if (questoesDescritivas>0 && questoesObjetivas>0)
+            if (questoesDescritivas > 0 && questoesObjetivas > 0)
             {
                 for (int i = 0; i < questoesObjetivas; i++)
                 {
                     todasQuestoes[i] = enunciadosObjetivas[i];
                 }
                 int countDesc = 0;
-                for (int i = questoesObjetivas; i < totalDeQuestoes ; i++)
+                for (int i = questoesObjetivas; i < totalDeQuestoes; i++)
                 {
                     todasQuestoes[i] = enunciadosDescritivas[countDesc];
                     countDesc++;
                 }
             }
-             else if (questoesDescritivas>0 && questoesObjetivas==0)
+            else if (questoesDescritivas > 0 && questoesObjetivas == 0)
             {
                 for (int i = 0; i <= totalDeQuestoes; i++)
                 {
                     todasQuestoes[i] = enunciadosDescritivas[i];
                 }
             }
-            else if(questoesObjetivas>0 && questoesDescritivas==0)
+            else if (questoesObjetivas > 0 && questoesDescritivas == 0)
             {
 
                 for (int i = 0; i < totalDeQuestoes; i++)
@@ -94,7 +94,7 @@ namespace Lucas
         {
             string [] alternativas = new string[questoesObjetivas];
             Console.WriteLine("cadastro de alternativas:");
-            char [] letras = new char[5];
+            char[] letras = new char[5];
              letras[0] = 'A';
              letras[1] = 'B';
              letras[2] = 'C';
@@ -120,13 +120,13 @@ namespace Lucas
             
             char [] alternativaCerta = new char[totalDeQuestoes];
             for (int i = 0; i < totalDeQuestoes; i++)
-            {
+        {
                 Console.WriteLine("qual é a alternativa certa");
                 alternativaCerta[i] = Convert.ToChar(Console.ReadLine());
 
 
             }
-
+            
             return alternativaCerta;
         }
 
@@ -135,15 +135,15 @@ namespace Lucas
             //cada prova estatica tem 10 questões randomicas(o enunciado coloquei enunciado+numero da questao+prova+numero da prova)(e considerando que a materia é matematica)
             // nesse mesmo metodo vai ser gerado os gabaritos das 4 provas estaticas(gerado nesse mesmo metodo por motivos de implementação mais simples... 
            //partindo que o padrao das questoes tem 4 opcoes (A,B,C,D e E)
-            string []respostasProvaObjetiva= new string[10];
-            string []respostasProvaObjetiva2=new string[10];
-            string [] respostasProvaDescritiva = new string[10];
-            string [] respostasProvaMesclada = new string[10];
-            string [] enunciadoProvaObjetiva = new string[10];
+            string[] respostasProvaObjetiva = new string[10];
+            string[] respostasProvaObjetiva2 = new string[10];
+            string[] respostasProvaDescritiva = new string[10];
+            string[] respostasProvaMesclada = new string[10];
+            string[] enunciadoProvaObjetiva = new string[10];
             string[] enunciadoProvaObjetiva2 = new string[10];
             string[] enunciadoProvaDescritiva = new string[10];
             string[] enunciadoProvaMesclada = new string[10];
-            char [] alternativas = new char[5];
+            char[] alternativas = new char[5];
             char[] alternativasRandomicas = "ABCDE".ToCharArray();
             string[] enunciadosProvaMescladaDescritivas = { "teorema de pitagoras", "teorema de tio chiquinho", "teorema do thiago", "teorema do pa e bola", "teorema do zé", "teorema do tio patinhas", "teorema do tio sam", "teorema do tio pinga" };
 
@@ -163,7 +163,7 @@ namespace Lucas
                 for (int j = 0; j < 10; j++)
                 {
                     enunciadoProvaObjetiva[j] = "enunciado da questao " + j + " da prova objetiva 1"; 
-                    respostasProvaObjetiva[j] = "resposta: "+"- " + j;
+                respostasProvaObjetiva[j] = "resposta: " + "- " + j;
                     enunciadoProvaObjetiva2[j] = "enunciado da questao " + j + " da prova objetiva 2";
                     respostasProvaObjetiva2[j] = "resposta: " + "- " + j;
                     
@@ -181,9 +181,9 @@ namespace Lucas
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(enunciadoProvaObjetiva[i]);
-                Console.WriteLine("alternativa " + alternativas[count1]+" " + respostasProvaObjetiva[i]);
+                Console.WriteLine("alternativa " + alternativas[count1] + " " + respostasProvaObjetiva[i]);
                 count1++;
-                if (count1==3)
+                if (count1 == 3)
                 {
                     count1 = 0;
                 }
@@ -193,9 +193,9 @@ namespace Lucas
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(enunciadoProvaObjetiva2[i]);
-                Console.WriteLine("alternativa " + alternativas[count2]+" " + respostasProvaObjetiva2[i]);
+                Console.WriteLine("alternativa " + alternativas[count2] + " " + respostasProvaObjetiva2[i]);
                 count2++;
-                if (count2==3)
+                if (count2 == 3)
                 {
                     count2 = 0;
                 }
@@ -206,7 +206,7 @@ namespace Lucas
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(enunciadoProvaDescritiva[i]);
-                Console.WriteLine("alternativa " + alternativas [count3]+" "+ respostasProvaDescritiva[i]);
+                Console.WriteLine("alternativa " + alternativas[count3] + " " + respostasProvaDescritiva[i]);
                 count3++;
                 if (count3 == 3)
                 {
@@ -235,9 +235,9 @@ namespace Lucas
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(enunciadoProvaMesclada[i]);
-                Console.WriteLine("alternativa " +alternativas[count4]+" "+respostasProvaMesclada[i]);
+                Console.WriteLine("alternativa " + alternativas[count4] + " " + respostasProvaMesclada[i]);
                 count4++;
-                if (count4==3)
+                if (count4 == 3)
                 {
                     count4 = 0;
                 }
