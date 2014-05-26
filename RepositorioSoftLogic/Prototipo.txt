@@ -9,13 +9,14 @@ Menu - Camila
 		- Movimento (Cadastrar Prova / Editar/ Remover); 
 		- Consulta	(Relatorio)
 		- Ajuda (Mostrar documentação - como funciona)
+		- Sobre (Mostrar os nomes da equipe e nome da SoftLogicc)
 		- Sair
 
 		cadastrarProva (Lucas)
 			montarProva (montar 4 estaticas e poder montar opcional)
 			montarGabarito (objetivas e dissertativas)
 			montarQuestoes (Dissertativa e Objetiva)
-			montarAlternativas (A até C)
+			montarAlternativas (A até E)
 			montarDissertativa
 
 		consultar (Rafael)
@@ -26,6 +27,11 @@ Menu - Camila
 		ajuda (Arnaldo)
 			exibirFuncoesMetodos
 			passo-a-passo
-			
+
+		sobre (Arnaldo)
+			Mostrar nome dos desenvolvedores da equipe
+			Mostrar uma descricao do produto
+			Mostra o nome da empresa (SoftLogic)
+						
 		montar Programa (Arnaldo)
 			organizar a estrutura
