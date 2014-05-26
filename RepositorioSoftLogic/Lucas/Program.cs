@@ -42,6 +42,7 @@ namespace Lucas
                     Console.WriteLine("digite o enunciado das questoes objetivas:");
                     enunciadosObjetivas[i] = Console.ReadLine();
                 }
+                CadastraAlternativasDaprova();
             }
             else
             {
