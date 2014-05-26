@@ -44,6 +44,14 @@ namespace Arnaldo
                     break;
                 }
             } while (!status);
+
+            if(!status){
+                Console.WriteLine("Até Logo");
+            }
+            else
+            {
+                //Continua o Menu
+            }
             Console.ReadKey();
         }
 
