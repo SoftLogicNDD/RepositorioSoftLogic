@@ -9,6 +9,7 @@ Menu - Camila
 		- Movimento (Cadastrar Prova / Editar/ Remover); 
 		- Consulta	(Relatorio)
 		- Ajuda (Mostrar documentação - como funciona)
+		- Sobre (Mostrar os nomes da equipe e nome da SoftLogicc)
 		- Sair
 
 		cadastrarProva (Lucas)
