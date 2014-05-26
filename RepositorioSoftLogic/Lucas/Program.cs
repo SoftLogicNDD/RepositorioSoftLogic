@@ -8,7 +8,7 @@ namespace Lucas
 {
     class Program
     {
-        public static int totalDeQuestoes=10;
+        public static int totalDeQuestoes;
         public static int questoesObjetivas=5;
         public static int questoesDescritivas=5;
 
@@ -275,7 +275,7 @@ namespace Lucas
         static void Main(string[] args)
         {
 
-
+            CadastroDeEnunciadoDaProva();
             GerarGabarito(totalDeQuestoes);
             Console.ReadKey();
 
