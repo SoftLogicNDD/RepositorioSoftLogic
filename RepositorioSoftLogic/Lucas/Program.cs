@@ -8,7 +8,7 @@ namespace Lucas
 {
     class Program
     {
-        public static int totalDeQuestoes;
+        public static int totalDeQuestoes=10;
         public static int questoesObjetivas=5;
         public static int questoesDescritivas=5;
 
@@ -42,6 +42,7 @@ namespace Lucas
                     Console.WriteLine("digite o enunciado das questoes objetivas:");
                     enunciadosObjetivas[i] = Console.ReadLine();
                 }
+                CadastraAlternativasDaprova();
             }
             else
             {
@@ -102,7 +103,7 @@ namespace Lucas
              letras[4] = 'E';
             for (int i = 0; i < questoesObjetivas; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < 5; j++) 
                 {
                     Console.WriteLine("digite a descrição da alternativa {0}, da questao :{1}",letras[j],i);
                     alternativas[i] = Console.ReadLine();
@@ -118,16 +119,33 @@ namespace Lucas
         {
             Console.WriteLine("gabarito");
             
-            char [] alternativaCerta = new char[totalDeQuestoes];
-            for (int i = 0; i < totalDeQuestoes; i++)
-        {
+            string [] alternativaCerta = new string[questoesObjetivas];
+            string[] RespostaCertaDescritiva =new string[questoesDescritivas];
+            string[]todasResposta=new string[totalDeQuestoes];
+            for (int i = 0; i < questoesObjetivas; i++)
+            {
                 Console.WriteLine("qual é a alternativa certa");
-                alternativaCerta[i] = Convert.ToChar(Console.ReadLine());
+                alternativaCerta[i] = Console.ReadLine();
 
 
             }
-            
-            return alternativaCerta;
+            for (int i = 0; i < questoesDescritivas; i++)
+            {
+                Console.WriteLine("digite a resposta descritiva certa:");
+                RespostaCertaDescritiva[i] = Console.ReadLine();
+            }
+            for (int i = 0; i < questoesObjetivas; i++)
+            {
+                todasResposta[i] = alternativaCerta[i];
+            }
+            for (int i = questoesObjetivas; i < questoesDescritivas; i++)
+            {
+                todasResposta[i] = RespostaCertaDescritiva[i];
+            }
+            for (int i = 0; i < totalDeQuestoes; i++)
+            {
+                Console.WriteLine(todasResposta[i]);
+            }
         }
 
         public static void GeraGabaritosDeProvasEstaticas()
@@ -255,7 +273,7 @@ namespace Lucas
         {
 
 
-            CadastroDeEnunciadoDaProva();
+            GerarGabarito();
             Console.ReadKey();
 
         }
