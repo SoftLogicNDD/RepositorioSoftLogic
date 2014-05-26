@@ -115,7 +115,7 @@ namespace Lucas
 
 
 
-        public static char[] GerarGabarito(int totalQuestoes)
+        public static string[] GerarGabarito(int totalQuestoes)
         {
             Console.WriteLine("gabarito");
             
@@ -138,14 +138,17 @@ namespace Lucas
             {
                 todasResposta[i] = alternativaCerta[i];
             }
-            for (int i = questoesObjetivas; i < questoesDescritivas; i++)
+            int count = 0;
+            for (int i = questoesObjetivas; i < totalQuestoes; i++)
             {
-                todasResposta[i] = RespostaCertaDescritiva[i];
+                todasResposta[i] = RespostaCertaDescritiva[count];
+                count++;
             }
             for (int i = 0; i < totalDeQuestoes; i++)
             {
                 Console.WriteLine(todasResposta[i]);
             }
+            return todasResposta;
         }
 
         public static void GeraGabaritosDeProvasEstaticas()
@@ -273,7 +276,7 @@ namespace Lucas
         {
 
 
-            GerarGabarito();
+            GerarGabarito(totalDeQuestoes);
             Console.ReadKey();
 
         }
