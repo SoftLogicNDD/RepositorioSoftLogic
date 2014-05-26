@@ -113,7 +113,6 @@ namespace Camila
             Console.WriteLine("4 - Sobre (Nomes da equipe e nome da empresa)");
             Console.WriteLine("5 - Encerrar o programa.");
             Console.WriteLine("\n\n\n\n\n\n\n\n");
-
             return Menu;
         }
     }
