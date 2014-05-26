@@ -12,7 +12,7 @@ namespace Lucas
         public static int questoesObjetivas=5;
         public static int questoesDescritivas=5;
 
-        public static string [] CadastroDeEnunciadoDaProva()
+        public static string[] CadastroDeEnunciadoDaProva()
         {
            
              totalDeQuestoes = questoesDescritivas + questoesObjetivas;
@@ -93,7 +93,7 @@ namespace Lucas
 
         public static string[] CadastraAlternativasDaprova()
         {
-            string [] alternativas = new string[questoesObjetivas];
+            string[] alternativas = new string[questoesObjetivas];
             Console.WriteLine("cadastro de alternativas:");
             char[] letras = new char[5];
              letras[0] = 'A';
@@ -103,9 +103,9 @@ namespace Lucas
              letras[4] = 'E';
             for (int i = 0; i < questoesObjetivas; i++)
             {
-                for (int j = 0; j < 5; j++) 
+                for (int j = 0; j < 5; j++)
                 {
-                    Console.WriteLine("digite a descrição da alternativa {0}, da questao :{1}",letras[j],i);
+                    Console.WriteLine("digite a descrição da alternativa {0}, da questao :{1}", letras[j], i);
                     alternativas[i] = Console.ReadLine();
 
                 }
@@ -115,7 +115,7 @@ namespace Lucas
 
 
 
-        public static char [] GerarGabarito()
+        public static char[] GerarGabarito(int totalQuestoes)
         {
             Console.WriteLine("gabarito");
             
@@ -123,7 +123,7 @@ namespace Lucas
             string[] RespostaCertaDescritiva =new string[questoesDescritivas];
             string[]todasResposta=new string[totalDeQuestoes];
             for (int i = 0; i < questoesObjetivas; i++)
-            {
+        {
                 Console.WriteLine("qual é a alternativa certa");
                 alternativaCerta[i] = Console.ReadLine();
 
