@@ -124,7 +124,7 @@ namespace Lucas
             string[]todasResposta=new string[totalDeQuestoes];
             for (int i = 0; i < questoesObjetivas; i++)
         {
-                Console.WriteLine("qual é a alternativa certa");
+                Console.WriteLine("qual é a alternativa certa: ");
                 alternativaCerta[i] = Console.ReadLine();
 
 

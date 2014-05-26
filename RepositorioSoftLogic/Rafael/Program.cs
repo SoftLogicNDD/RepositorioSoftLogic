@@ -8,8 +8,29 @@ namespace Rafael
 {
     class Program
     {
+        public static void Consultar()
+        {
+            int opc;
+            Console.WriteLine("/////////// Consultar Gabaritos ///////////");
+            Console.WriteLine("1 - Ver prova descritiva ");
+            Console.WriteLine("2 - Ver prova objetiva ");
+            Console.WriteLine("3 - Ver prova mesclada ");
+            opc = Convert.ToInt32(Console.ReadLine());
+            switch (opc)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }
         static void Main(string[] args)
         {
+
         }
     }
 }
