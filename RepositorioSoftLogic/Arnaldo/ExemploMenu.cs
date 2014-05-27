@@ -28,19 +28,22 @@ namespace Arnaldo
                 if (!status)
                 {
                     Console.Clear();
-                    Console.WriteLine("ATENÇÃO: Nome de usuário e senha não conferem! Verifique-os");
+                    Console.WriteLine("ATENÇÃO: Nome de usuário e senha não conferem! Verifique-os\n \nAperte ENTER para continuar");
                     tentativasErradas++;
+                    Console.ReadKey();
                 }
                 else
                 {
                     Console.Clear();
-                    Console.WriteLine("Sucesso: Você está logado!");
+                    Console.WriteLine("Sucesso: Você está logado!\n \nAperte ENTER para continuar");
+                    Console.ReadKey();
                 }
 
                 if (tentativasErradas == 3)
                 {
                     Console.Clear();
-                    Console.WriteLine("ATENÇÃO: Usuário Bloqueado! \nDados informados incorretamente por mais de 3 vezes!");
+                    Console.WriteLine("ATENÇÃO: Usuário Bloqueado! \nDados informados incorretamente por mais de 3 vezes!\nAperte ENTER para continuar");
+                    Console.ReadKey();
                     break;
                 }
             } while (!status);
@@ -52,7 +55,6 @@ namespace Arnaldo
             {
                 //Continua o Menu
             }
-            Console.ReadKey();
         }
 
         public static bool VerificarCredenciais()
