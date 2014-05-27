@@ -10,21 +10,39 @@ namespace Arnaldo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(" ===== AJUDA =====");
-            MostrarOpcoes();
-            Console.Write("\nInforme a opção desejada: ");
-            int opcaoMenuAjuda = int.Parse(Console.ReadLine());
-            //switch (opcaoMenuAjuda)
-            //{
-            //    case 1:
-            //        AjudaCadastro();
-            //    case 2:
-            //        AjudaConsulta();
-            //    case 3:
-            //        MenuInicial();
-            //    default:
-            //        Console.WriteLine("ATENÇÃO! Opção Inválida");
-            //}
+            int opcaoMenuAjuda = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(" ===== AJUDA =====");
+                MostrarOpcoes();
+                Console.Write("\nInforme a opção desejada: ");
+                opcaoMenuAjuda = int.Parse(Console.ReadLine());
+                switch (opcaoMenuAjuda)
+                {
+                    case 1:
+                        Console.Clear();
+                        Console.WriteLine(" ===== AJUDA - CADASTRO ===== \nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine(" ===== AJUDA - CONSULTA ===== \nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 3:                        
+                        Console.Clear();
+                        Console.WriteLine("Aperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("ATENÇÃO! Opção Inválida \nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                }
+            } while (opcaoMenuAjuda != 3);
+            Console.WriteLine("Até Logo");
             Console.ReadKey();
         }
 
