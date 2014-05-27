@@ -11,7 +11,7 @@ namespace Arnaldo
         static string user = "Thiago";
         static string senha = "thiago123";
 
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             RealizarLogin();
             Console.ReadKey();
