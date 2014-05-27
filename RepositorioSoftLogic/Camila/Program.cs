@@ -8,114 +8,88 @@ namespace Camila
 {
     class Program
     {
-        public static string Login, Senha, Menu;
-        public static int Opcao;
-
+        static string user = "Thiago";
+        static string senha = "thiago123";
+        static int Opcao;
         static void Main(string[] args)
         {
-            Console.WriteLine("=============== SEJA BEM VINDO! ===============");
-            Console.WriteLine("\n\n");
-            //Cadastro(Login, Senha);
-            realizarLogin(Login, Senha);
-            Console.Clear();
-            MenuIniciar(Menu);
-            Console.Write("Informe a opção desejada: ");
-            Opcao = int.Parse(Console.ReadLine());
-            
+            RealizarLogin();
+            Console.ReadKey();
 
-            Console.ReadLine();
         }
-        
 
-        private static string Cadastro (string Login, string Senha)
+        public static void RealizarLogin()
         {
-            
-            Console.Write("Login: ");
-            Login = Console.ReadLine();
-            Console.Write("Senha: ");
-            Senha = Console.ReadLine();
-            Console.Clear();
-
-            if (Senha == "Thiago" + 123)
+            bool status = false;
+            int tentativasErradas = 0;
+            do
             {
-                Console.WriteLine("Senha válida! Aguarde o carregamento!");
-            }
-
-            else
-            {
-                Console.WriteLine("Senha inválida! Tente novamente!");
-
-                for (int i = 0; i < 2; i++)
+                status = VerificarCredenciais();
+                if (!status)
                 {
-                    Console.Write("Login: ");
-                    Login = Console.ReadLine();
-                    Console.Write("Senha: ");
-                    Senha = Console.ReadLine();
                     Console.Clear();
-
-                    if (Senha == "Thiago" + 123)
-                    {
-                        Console.WriteLine("Senha válida! Aguarde o carregamento!");
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Tente novamente!");
-                    }
-
-                }
-            }
-
-            return Login;
-
-        }
-
-        public static void realizarLogin(string Login, string Senha)
-        {
-            mostraLogin();
-            int countErradas = 0;
-            if (Senha == "Thiago" + 123)
-            {
-                Console.WriteLine("Senha válida! Aguarde o carregamento!");
-            }
-            else
-            {
-                countErradas++;
-                if (countErradas < 3)
-                {
-                    mostraLogin();
+                    Console.WriteLine("=========================== ATENÇÃO! ===========================");
+                    Console.WriteLine("\n\n");
+                    Console.WriteLine("Nome de usuário e senha não conferem! Verifique-os.\n \nAperte ENTER para continuar");
+                    tentativasErradas++;
+                    Console.ReadKey();
                 }
                 else
                 {
-                    Console.WriteLine("Usuário bloqueado!");
-                    
+                    Console.Clear();
+                    Console.Write("Sucesso: Você está logado!\n \nAperte ENTER para continuar");
+                    Console.ReadKey();
+                    Console.Clear();
                 }
+
+                if (tentativasErradas == 3)
+                {
+                    Console.Clear();
+                    Console.WriteLine("=========================== ATENÇÃO! ===========================");
+                    Console.WriteLine("\n\n\n\n\n\n\n\n ");
+                    Console.WriteLine("Usuário Bloqueado! \nDados informados incorretamente por 3 vezes seguidas!\n");
+                    Console.WriteLine("\n\n\n\n\n\n\n\n\n ");
+                    break;
+                }
+            } while (!status);
+
+            if (!status)
+            {
+                Console.WriteLine("Tente novamente mais tarde!");
             }
-
+            else
+            {
+                Console.WriteLine("=========================== MENU ===========================");
+                Console.WriteLine("\n\n\n\n\n\n\n");
+                Console.WriteLine("1 - Movimento (Cadastrar Prova / Editar / Remover");
+                Console.WriteLine("2 - Consulta (Relatório)");
+                Console.WriteLine("3 - Ajuda (Documentação - como funciona)");
+                Console.WriteLine("4 - Sobre (Nomes da equipe e nome da empresa)");
+                Console.WriteLine("5 - Encerrar o programa.");
+                Console.WriteLine("\n\n\n\n\n\n\n\n");
+                Console.Write("Informe a opção desejada: ");
+                Opcao = int.Parse(Console.ReadLine());
+            }
         }
 
-        public static void mostraLogin()
+        public static bool VerificarCredenciais()
         {
-            Console.Write("Login: ");
-            Login = Console.ReadLine();
-            Console.Write("Senha: ");
-            Senha = Console.ReadLine();
             Console.Clear();
+            Console.WriteLine(" =========================== LOGIN ===========================");
+            Console.WriteLine("\n\n");
+            Console.Write("Informe o nome de usuário: ");
+            string nameUser = Console.ReadLine();
+            Console.Write("Informe a senha: ");
+            string senhaUser = Console.ReadLine();
+            if (nameUser.ToUpper() == user.ToUpper() && senha == senhaUser)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        private static string MenuIniciar(string Menu)
-        {
-            Console.WriteLine("========================= MENU ===========================");
-            Console.WriteLine("\n\n\n\n\n\n\n");
-            Console.WriteLine("1 - Movimento (Cadastrar Prova / Editar / Remover");
-            Console.WriteLine("2 - Consulta (Relatório)");
-            Console.WriteLine("3 - Ajuda (Documentação - como funciona)");
-            Console.WriteLine("4 - Sobre (Nomes da equipe e nome da empresa)");
-            Console.WriteLine("5 - Encerrar o programa.");
-            Console.WriteLine("\n\n\n\n\n\n\n\n");
-            return Menu;
-        }
     }
-
-    
 }
