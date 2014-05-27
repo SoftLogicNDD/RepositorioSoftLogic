@@ -42,7 +42,7 @@ namespace Arnaldo
                 if (tentativasErradas == 3)
                 {
                     Console.Clear();
-                    Console.WriteLine("ATENÇÃO: Usuário Bloqueado! \nDados informados incorretamente por 3 vezes seguidas!\nAperte ENTER para continuar");                    
+                    Console.WriteLine("ATENÇÃO: Usuário Bloqueado! \nDados informados incorretamente por 3 vezes seguidas!\n");                    
                     break;
                 }
             } while (!status);
