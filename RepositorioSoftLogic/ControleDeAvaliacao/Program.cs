@@ -10,7 +10,7 @@ namespace ControleDeAvaliacao
     {
         static string User = "Thiago";
         static string Senha = "thiago123";
-        static int Opcao;
+        static int OpcaoMenu;
         static void Main(string[] args)
         {
             bool status = false;
@@ -55,26 +55,26 @@ namespace ControleDeAvaliacao
                 do
                 {
                     Console.Clear();
-                    Opcao = MostrarMenu();
-                    switch (Opcao)
+                    OpcaoMenu = MostrarMenu();
+                    switch (OpcaoMenu)
                     {
                         case 3:
                             MostrarAjuda();
+                            break;
+                        case 4:
+                            MostrarSobre();
+                            break;                        
+                        case 5:
+                            Console.Clear();
+                            Console.WriteLine("Até Logo!");
                             break;
                         default:
                             Console.Clear();
                             Console.WriteLine("ATENÇÃO: Opção Inválida! \nPressione ENTER para continuar.");
                             Console.ReadKey();
-                            break;
-                        case 5:
-                            Console.Clear();
-                            Console.WriteLine("Até Logo!");
-                            break;
-                        case 4:
-                            MostrarSobre();
-                            break;
+                            break;                        
                     }
-                } while (Opcao != 5);               
+                } while (OpcaoMenu != 5);               
             }
             Console.ReadKey();
         }
@@ -114,14 +114,10 @@ namespace ControleDeAvaliacao
                 }
             } while (!status);
 
-            if (!status)
-            {
-                Console.WriteLine("Tente novamente mais tarde!");
-            }
-            else
-            {
-                Opcao = MostrarMenu();
-            }
+            if (!status)            
+                Console.WriteLine("Tente novamente mais tarde!");            
+            else            
+                OpcaoMenu = MostrarMenu();            
         }
 
         public static int MostrarMenu()
@@ -147,14 +143,10 @@ namespace ControleDeAvaliacao
             string nameUser = Console.ReadLine();
             Console.Write("Informe a senha: ");
             string senhaUser = Console.ReadLine();
-            if (nameUser.ToUpper() == User.ToUpper() && Senha == senhaUser)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (nameUser.ToUpper() == User.ToUpper() && Senha == senhaUser)            
+                return true;            
+            else            
+                return false;            
         }
 
         static void MostrarOpcoesAjuda()
