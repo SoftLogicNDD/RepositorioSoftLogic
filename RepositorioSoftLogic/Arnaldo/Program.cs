@@ -34,7 +34,7 @@ namespace Arnaldo
                         Console.WriteLine("\n2 - Cadastrar: \n \n2.1 - {0}\n2.2 - {1}\n2.3 - {2}\n", instrucoesCadastro, instrucoesCadastro2, instrucoesCadastro3);
 
                         string instrucoesGabarito = "O primeiro passo da geração de gabarito é informar qual é a alternativa \ncorreta das questões objetivas";
-                        string instrucoesGabarito2 = "Após isso, basta informa quais são as respostas para ser ter base na \ncorreção das questões descritivas";
+                        string instrucoesGabarito2 = "Após isso, basta informa quais são as respostas para ser ter base na \ncorreção das questões descritivas. \n3.3 - Com todas essas etapas feitas, o programa irá exibir na tela o gabarito \n(Questão e sua respectiva resposta)";
                         Console.WriteLine("\n3 - Gabarito: \n \n3.1 - {0} \n3.2 - {1}", instrucoesGabarito, instrucoesGabarito2);
 
 
