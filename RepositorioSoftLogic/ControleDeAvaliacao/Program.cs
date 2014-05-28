@@ -23,7 +23,7 @@ namespace ControleDeAvaliacao
                     Console.Clear();
                     Console.WriteLine("=========================== ATENÇÃO! ===========================");
                     Console.WriteLine("\n\n\n\n\n\n\n\n ");
-                    Console.WriteLine("Nome de usuário e senha não conferem! Verifique-os.\n \nAperte ENTER para continuar");
+                    Console.WriteLine("ATENÇÃO: Nome de usuário e senha não conferem! Verifique-os.\n \nAperte ENTER para continuar");
                     tentativasErradas++;
                     Console.ReadKey();
                 }
@@ -32,7 +32,7 @@ namespace ControleDeAvaliacao
                     Console.Clear();
                     Console.WriteLine("=========================== HOME ===========================");
                     Console.WriteLine("\n\n\n\n\n");
-                    Console.Write("Sucesso: Você está logado!\n\n\n\n\nAperte ENTER para continuar");
+                    Console.Write("SUCESSO! Você está logado!\n\n\n\n\nAperte ENTER para continuar");
                     Console.ReadKey();
                     Console.Clear();
                 }
@@ -42,7 +42,7 @@ namespace ControleDeAvaliacao
                     Console.Clear();
                     Console.WriteLine("=========================== ATENÇÃO! ===========================");
                     Console.WriteLine("\n\n\n\n\n\n\n\n ");
-                    Console.WriteLine("Usuário Bloqueado! \nDados informados incorretamente por 3 vezes seguidas!\n");
+                    Console.WriteLine("USUÁRIO BLOQUEADO! \nDados informados incorretamente por 3 vezes seguidas!\n");
                     Console.WriteLine("\n\n\n\n\n\n\n\n\n ");
                     break;
                 }
@@ -70,7 +70,7 @@ namespace ControleDeAvaliacao
                             Console.Clear();
                             Console.WriteLine("=========================== SAINDO ===========================");
                             Console.WriteLine("\n\n\n\n\n\n\n\n ");
-                            Console.WriteLine("Até Logo!");
+                            Console.WriteLine("ATÉ LOGO!");
                             break;
                         default:
                             Console.Clear();
@@ -81,50 +81,7 @@ namespace ControleDeAvaliacao
                 } while (OpcaoMenu != 5);               
             }
             Console.ReadKey();
-        }
-
-        public static void RealizarLogin()
-        {
-            bool status = false;
-            int tentativasErradas = 0;
-            do
-            {
-                status = VerificarCredenciais();
-                if (!status)
-                {
-                    Console.Clear();
-                    Console.WriteLine("=========================== ATENÇÃO! ===========================");
-                    Console.WriteLine("\n\n");
-                    Console.WriteLine("Nome de usuário e senha não conferem! Verifique-os.\n \nAperte ENTER para continuar");
-                    tentativasErradas++;
-                    Console.ReadKey();
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("=========================== HOME ===========================");
-                    Console.WriteLine("\n\n");
-                    Console.Write("Sucesso: Você está logado!\n \nAperte ENTER para continuar");
-                    Console.ReadKey();
-                    Console.Clear();
-                }
-
-                if (tentativasErradas == 3)
-                {
-                    Console.Clear();
-                    Console.WriteLine("=========================== ATENÇÃO! ===========================");
-                    Console.WriteLine("\n\n\n\n\n\n\n\n ");
-                    Console.WriteLine("Usuário Bloqueado! \nDados informados incorretamente por 3 vezes seguidas!\n");
-                    Console.WriteLine("\n\n\n\n\n\n\n\n\n ");
-                    break;
-                }
-            } while (!status);
-
-            if (!status)            
-                Console.WriteLine("Tente novamente mais tarde!");            
-            else            
-                OpcaoMenu = MostrarMenu();            
-        }
+        }        
 
         public static int MostrarMenu()
         {
