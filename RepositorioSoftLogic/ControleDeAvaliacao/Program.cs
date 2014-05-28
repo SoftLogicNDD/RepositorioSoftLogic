@@ -22,7 +22,7 @@ namespace ControleDeAvaliacao
                 {
                     Console.Clear();
                     Console.WriteLine("=========================== ATENÇÃO! ===========================");
-                    Console.WriteLine("\n\n\n\n\n\n\n\n ");
+                    Console.WriteLine("\n\n\n\n\n\n\n\n");
                     Console.WriteLine("ATENÇÃO: Nome de usuário e senha não conferem! Verifique-os.\n \nAperte ENTER para continuar");
                     tentativasErradas++;
                     Console.ReadKey();

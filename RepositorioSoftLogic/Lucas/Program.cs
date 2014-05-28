@@ -358,6 +358,7 @@ namespace Lucas
             ImprimirGabarito(gabarito, codigo);
             ImprimiEnunciadoObjetivas(EnunciadosObjetivas, alternativas);
             ImprimiEnunciadosDescritivas(EnunciadosDescritivas);
+            Console.Write("\n\nPressione ENTER para continuar: ");
             Console.ReadKey();
         }
     }
