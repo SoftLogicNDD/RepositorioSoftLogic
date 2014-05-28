@@ -15,7 +15,7 @@ namespace Arnaldo
             {
                 Console.Clear();
                 Console.WriteLine(" ===== AJUDA =====");
-                MostrarOpcoes();
+                MostrarOpcoesAjuda();
                 Console.Write("\nInforme a opção desejada: ");
                 opcaoMenuAjuda = int.Parse(Console.ReadLine());
                 switch (opcaoMenuAjuda)
@@ -57,12 +57,10 @@ namespace Arnaldo
                         Console.ReadKey();
                         break;
                 }
-            } while (opcaoMenuAjuda != 3);
-            Console.WriteLine("Até Logo");
-            Console.ReadKey();
+            } while (opcaoMenuAjuda != 3);           
         }
 
-        static void MostrarOpcoes()
+        static void MostrarOpcoesAjuda()
         {
             Console.WriteLine("1 - Cadastro \n2 - Consultas \n3 - Retornar ao Menu Inicial");
         }

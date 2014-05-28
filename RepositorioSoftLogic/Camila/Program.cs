@@ -8,8 +8,8 @@ namespace Camila
 {
     class Program
     {
-        static string user = "Thiago";
-        static string senha = "thiago123";
+        static string User = "Thiago";
+        static string Senha = "thiago123";
         static int Opcao;
         static void Main(string[] args)
         {
@@ -81,7 +81,7 @@ namespace Camila
             string nameUser = Console.ReadLine();
             Console.Write("Informe a senha: ");
             string senhaUser = Console.ReadLine();
-            if (nameUser.ToUpper() == user.ToUpper() && senha == senhaUser)
+            if (nameUser.ToUpper() == User.ToUpper() && Senha == senhaUser)
             {
                 return true;
             }
