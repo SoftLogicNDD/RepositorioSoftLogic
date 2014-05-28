@@ -8,144 +8,146 @@ namespace Lucas
 {
     class Program
     {
-        public static int totalDeQuestoes;
-        public static int questoesObjetivas=5;
-        public static int questoesDescritivas=5;
+        public static int TotalDeQuestoes;
+        public static int QuestoesObjetivas = 5;
+        public static int QuestoesDescritivas = 5;
 
         public static string[] CadastroDeEnunciadoDaProva()
-        {
-           
-             totalDeQuestoes = questoesDescritivas + questoesObjetivas;
-            string[] enunciadosDescritivas = new string[questoesDescritivas];
-            string[] enunciadosObjetivas = new string[questoesObjetivas];
-           string[] todasQuestoes = new string[totalDeQuestoes];
-            
+        {            
+            Console.WriteLine(" ========== CADASTRO ==========\n");
+            Console.Write("Informe a quantidade de questões descritivas: ");
+            QuestoesDescritivas = int.Parse(Console.ReadLine());
+            Console.Write("Informe a quantidade de questões objetivas: ");
+            QuestoesObjetivas = int.Parse(Console.ReadLine());            
 
-            if (questoesDescritivas > 0)
+            TotalDeQuestoes = QuestoesDescritivas + QuestoesObjetivas;
+            string[] enunciadosDescritivas = new string[QuestoesDescritivas];
+            string[] enunciadosObjetivas = new string[QuestoesObjetivas];
+            string[] todasQuestoes = new string[TotalDeQuestoes];
+
+            if (QuestoesDescritivas > 0)
             {
-                Console.WriteLine("cadastro de questoes descritivas");
-                for (int i = 0; i < questoesDescritivas; i++)
+                Console.Clear();
+                Console.WriteLine("\n ===== Cadastro De Questões Descritivas =====");
+                for (int i = 0; i < QuestoesDescritivas; i++)
                 {
-                    Console.WriteLine("digite o enunciado das questoes descritivas:");
+                    Console.WriteLine("\nDigite o enunciado das questão descritiva {0}: ", i);
                     enunciadosDescritivas[i] = Console.ReadLine();
                 }
             }
             else
             {
-                Console.WriteLine("não há questões descritivas para cadastro...");
+                Console.Clear();
+                Console.WriteLine("Não há questões descritivas para cadastro!");
             }
-            if (questoesObjetivas > 0)
+
+            if (QuestoesObjetivas > 0)
             {
-                Console.WriteLine("cadastro de questoes objetivas");
-                for (int i = 0; i < questoesObjetivas; i++)
+                Console.Clear();
+                Console.WriteLine("\n===== Cadastro de Questões Objetivas =====");
+                for (int i = 0; i < QuestoesObjetivas; i++)
                 {
-                    Console.WriteLine("digite o enunciado das questoes objetivas:");
+                    Console.WriteLine("\nDigite o enunciado das questão objetiva {0}: ", i);
                     enunciadosObjetivas[i] = Console.ReadLine();
                 }
                 CadastraAlternativasDaprova();
             }
             else
             {
-                Console.WriteLine("não há questões objetivas para cadastro...");
+                Console.Clear();
+                Console.WriteLine("Mão há questões objetivas para cadastro!");
             }
-            if (questoesDescritivas > 0 && questoesObjetivas > 0)
+
+            if (QuestoesDescritivas > 0 && QuestoesObjetivas > 0)
             {
-                for (int i = 0; i < questoesObjetivas; i++)
+                for (int i = 0; i < QuestoesObjetivas; i++)
                 {
                     todasQuestoes[i] = enunciadosObjetivas[i];
                 }
                 int countDesc = 0;
-                for (int i = questoesObjetivas; i < totalDeQuestoes; i++)
+                for (int i = QuestoesObjetivas; i < TotalDeQuestoes; i++)
                 {
                     todasQuestoes[i] = enunciadosDescritivas[countDesc];
                     countDesc++;
                 }
             }
-            else if (questoesDescritivas > 0 && questoesObjetivas == 0)
+            else if (QuestoesDescritivas > 0 && QuestoesObjetivas == 0)
             {
-                for (int i = 0; i <= totalDeQuestoes; i++)
+                for (int i = 0; i <= TotalDeQuestoes; i++)
                 {
                     todasQuestoes[i] = enunciadosDescritivas[i];
                 }
             }
-            else if (questoesObjetivas > 0 && questoesDescritivas == 0)
+            else if (QuestoesObjetivas > 0 && QuestoesDescritivas == 0)
             {
 
-                for (int i = 0; i < totalDeQuestoes; i++)
+                for (int i = 0; i < TotalDeQuestoes; i++)
                 {
                     todasQuestoes[i] = enunciadosObjetivas[i];
                 }
             }
             else
             {
-                Console.WriteLine("quantidade de questoes invalida");
+                Console.WriteLine("ATENÇÃO: Quantidade de Questões Inválida!");
             }
-            for (int i = 0; i < totalDeQuestoes; i++)
+            for (int i = 0; i < TotalDeQuestoes; i++)
             {
                 Console.WriteLine(todasQuestoes[i]);
             }
-
-
-
             return todasQuestoes;
-           
         }
 
         public static string[] CadastraAlternativasDaprova()
         {
-            string[] alternativas = new string[questoesObjetivas];
-            Console.WriteLine("cadastro de alternativas:");
+            Console.Clear();
+            string[] alternativas = new string[QuestoesObjetivas];
+            Console.WriteLine("===== Cadastro de Alternativas =====");
             char[] letras = new char[5];
-             letras[0] = 'A';
-             letras[1] = 'B';
-             letras[2] = 'C';
-             letras[3] = 'D';
-             letras[4] = 'E';
-            for (int i = 0; i < questoesObjetivas; i++)
+            letras[0] = 'A';
+            letras[1] = 'B';
+            letras[2] = 'C';
+            letras[3] = 'D';
+            letras[4] = 'E';
+            for (int i = 0; i < QuestoesObjetivas; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    Console.WriteLine("digite a descrição da alternativa {0}, da questao :{1}", letras[j], i);
+                    Console.WriteLine("Digite a descrição da alternativa {0}, da questão {1}: ", letras[j], i);
                     alternativas[i] = Console.ReadLine();
-
                 }
             }
             return alternativas;
         }
 
-
-
         public static string[] GerarGabarito(int totalQuestoes)
         {
-            Console.WriteLine("gabarito");
-            
-            string [] alternativaCerta = new string[questoesObjetivas];
-            string[] RespostaCertaDescritiva =new string[questoesDescritivas];
-            string[]todasResposta=new string[totalDeQuestoes];
-            for (int i = 0; i < questoesObjetivas; i++)
-        {
-                Console.WriteLine("qual é a alternativa certa: ");
-                alternativaCerta[i] = Console.ReadLine();
-
-
-            }
-            for (int i = 0; i < questoesDescritivas; i++)
+            Console.WriteLine("===== Gabarito =====");
+            string[] alternativaCerta = new string[QuestoesObjetivas];
+            string[] RespostaCertaDescritiva = new string[QuestoesDescritivas];
+            string[] todasResposta = new string[TotalDeQuestoes];
+            for (int i = 0; i < QuestoesObjetivas; i++)
             {
-                Console.WriteLine("digite a resposta descritiva certa:");
+                Console.WriteLine("Qual é a alternativa certa da questão {0}: ", i);
+                alternativaCerta[i] = Console.ReadLine();
+            }
+            for (int i = 0; i < QuestoesDescritivas; i++)
+            {
+                Console.WriteLine("Digite a resposta descritiva certa da questão {0}: ", i);
                 RespostaCertaDescritiva[i] = Console.ReadLine();
             }
-            for (int i = 0; i < questoesObjetivas; i++)
+            for (int i = 0; i < QuestoesObjetivas; i++)
             {
                 todasResposta[i] = alternativaCerta[i];
             }
             int count = 0;
-            for (int i = questoesObjetivas; i < totalQuestoes; i++)
+            for (int i = QuestoesObjetivas; i < totalQuestoes; i++)
             {
                 todasResposta[i] = RespostaCertaDescritiva[count];
                 count++;
             }
-            for (int i = 0; i < totalDeQuestoes; i++)
+            for (int i = 0; i < TotalDeQuestoes; i++)
             {
+                Console.WriteLine(" ========== GABARITO =========\n");
                 Console.WriteLine(todasResposta[i]);
             }
             return todasResposta;
@@ -155,7 +157,7 @@ namespace Lucas
         {
             //cada prova estatica tem 10 questões randomicas(o enunciado coloquei enunciado+numero da questao+prova+numero da prova)(e considerando que a materia é matematica)
             // nesse mesmo metodo vai ser gerado os gabaritos das 4 provas estaticas(gerado nesse mesmo metodo por motivos de implementação mais simples... 
-           //partindo que o padrao das questoes tem 4 opcoes (A,B,C,D e E)
+            //partindo que o padrao das questoes tem 4 opcoes (A,B,C,D e E)
             string[] respostasProvaObjetiva = new string[10];
             string[] respostasProvaObjetiva2 = new string[10];
             string[] respostasProvaDescritiva = new string[10];
@@ -167,10 +169,7 @@ namespace Lucas
             char[] alternativas = new char[5];
             char[] alternativasRandomicas = "ABCDE".ToCharArray();
             string[] enunciadosProvaMescladaDescritivas = { "teorema de pitagoras", "teorema de tio chiquinho", "teorema do thiago", "teorema do pa e bola", "teorema do zé", "teorema do tio patinhas", "teorema do tio sam", "teorema do tio pinga" };
-
-
             int t = 0;
-
             Random rnd = new Random();
             for (int i = 0; i < 5; i++)
             {
@@ -178,107 +177,92 @@ namespace Lucas
                 alternativas[i] = alternativasRandomicas[t];
             }
 
-
             //gabarito das 4 provas uma seguinte das outras;
-            
-                for (int j = 0; j < 10; j++)
-                {
-                    enunciadoProvaObjetiva[j] = "enunciado da questao " + j + " da prova objetiva 1"; 
-                respostasProvaObjetiva[j] = "resposta: " + "- " + j;
-                    enunciadoProvaObjetiva2[j] = "enunciado da questao " + j + " da prova objetiva 2";
-                    respostasProvaObjetiva2[j] = "resposta: " + "- " + j;
-                    
-                    
-                }
-             int l = 0;
+            for (int j = 0; j < 10; j++)
+            {
+                enunciadoProvaObjetiva[j] = "Enunciado da questao " + j + " da prova objetiva 1";
+                respostasProvaObjetiva[j] = "Resposta: " + "- " + j;
+                enunciadoProvaObjetiva2[j] = "Enunciado da questao " + j + " da prova objetiva 2";
+                respostasProvaObjetiva2[j] = "Resposta: " + "- " + j;
+            }
+            int l = 0;
             for (int i = 0; i < 10; i++)
             {
-                enunciadoProvaDescritiva[i] = "enunciado da questao " + i + " da prova descritiva";
+                enunciadoProvaDescritiva[i] = "Enunciado da questao " + i + " da prova descritiva";
                 l = rnd.Next(enunciadosProvaMescladaDescritivas.Length);
                 respostasProvaDescritiva[i] = enunciadosProvaMescladaDescritivas[l];
             }
             int count1 = 0;
-            Console.WriteLine("prova 1 (prova objetiva 1)\n");
+            Console.WriteLine("===== Prova 1 (Prova Objetiva 1) =====\n");
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(enunciadoProvaObjetiva[i]);
-                Console.WriteLine("alternativa " + alternativas[count1] + " " + respostasProvaObjetiva[i]);
+                Console.WriteLine("Alternativa " + alternativas[count1] + " " + respostasProvaObjetiva[i]);
                 count1++;
                 if (count1 == 3)
                 {
                     count1 = 0;
                 }
             }
-            Console.WriteLine("prova 2 (prova objetiva 2)\n");
+            Console.WriteLine("===== Prova 2 (Prova Objetiva 2) =====\n");
             int count2 = 0;
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(enunciadoProvaObjetiva2[i]);
-                Console.WriteLine("alternativa " + alternativas[count2] + " " + respostasProvaObjetiva2[i]);
+                Console.WriteLine("Alternativa " + alternativas[count2] + " " + respostasProvaObjetiva2[i]);
                 count2++;
                 if (count2 == 3)
                 {
                     count2 = 0;
                 }
             }
-          
+
             int count3 = 0;
-            Console.WriteLine("prova 3 (prova descritiva)\n");
+            Console.WriteLine("Prova 3 (Prova Descritiva)\n");
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(enunciadoProvaDescritiva[i]);
-                Console.WriteLine("alternativa " + alternativas[count3] + " " + respostasProvaDescritiva[i]);
+                Console.WriteLine("Alternativa " + alternativas[count3] + " " + respostasProvaDescritiva[i]);
                 count3++;
                 if (count3 == 3)
                 {
                     count3 = 0;
                 }
-            }         
-            
-            
-                      
+            }
+
             int k = 0;
-           
+
             for (int i = 0; i < 5; i++)
             {
-                enunciadoProvaMesclada[i] = "enunciado da questao " + i + " da prova mesclada";
+                enunciadoProvaMesclada[i] = "Enunciado da questao " + i + " da prova mesclada";
                 k = rnd.Next(enunciadosProvaMescladaDescritivas.Length);
-                respostasProvaMesclada[i] = "resposta " + enunciadosProvaMescladaDescritivas[k];
+                respostasProvaMesclada[i] = "Resposta " + enunciadosProvaMescladaDescritivas[k];
             }
             for (int i = 5; i < 10; i++)
             {
-                enunciadoProvaMesclada[i] = "enunciado da questao " + i + " da prova mesclada";
-                respostasProvaMesclada[i] = "resposta " + "- " + i;
+                enunciadoProvaMesclada[i] = "Enunciado da questao " + i + " da prova mesclada";
+                respostasProvaMesclada[i] = "Resposta " + "- " + i;
             }
 
-            Console.WriteLine("prova 4 (prova mesclada)\n");
+            Console.WriteLine("===== Prova 4 (Prova Mesclada) =====\n");
             int count4 = 0;
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(enunciadoProvaMesclada[i]);
-                Console.WriteLine("alternativa " + alternativas[count4] + " " + respostasProvaMesclada[i]);
+                Console.WriteLine("Alternativa " + alternativas[count4] + " " + respostasProvaMesclada[i]);
                 count4++;
                 if (count4 == 3)
                 {
                     count4 = 0;
                 }
             }
-
-
-
         }
-
-
-
-
 
         static void Main(string[] args)
         {
-
             CadastroDeEnunciadoDaProva();
-            GerarGabarito(totalDeQuestoes);
+            GerarGabarito(TotalDeQuestoes);
             Console.ReadKey();
-
         }
     }
 }
