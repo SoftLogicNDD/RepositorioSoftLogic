@@ -70,6 +70,9 @@ namespace ControleDeAvaliacao
                             Console.Clear();
                             Console.WriteLine("Até Logo!");
                             break;
+                        case 4:
+                            MostrarSobre();
+                            break;
                     }
                 } while (Opcao != 5);               
             }
@@ -159,6 +162,16 @@ namespace ControleDeAvaliacao
             Console.WriteLine("1 - Cadastro \n2 - Consultas \n3 - Retornar ao Menu Inicial");
         }
 
+        static void MostrarSobre()
+        {
+            Console.Clear();
+            Console.WriteLine(" ===== SOBRE =====\n");
+            Console.WriteLine("Nome do Programa: CONTROLE DE AVALIAÇÕES");
+            Console.WriteLine("Empresa: SOFTLOGIC");
+            Console.WriteLine("Equipe de Desenvolvimento: \n- ARNALDO MADEIRA \n- CAMILA SILVA \n- LUCAS SIQUEIRA \n- RAFAEL ALDO");
+            Console.Write("\nPressione ENTER para continuar: ");
+            Console.ReadKey();
+        }
         static void MostrarAjuda()
         {
             int opcaoMenuAjuda = 0;
