@@ -22,7 +22,14 @@ namespace Arnaldo
                 {
                     case 1:
                         Console.Clear();
-                        Console.WriteLine(" ===== AJUDA - CADASTRO ===== \nAperte ENTER para continuar");
+                        Console.WriteLine(" ===== AJUDA - CADASTRO ===== \n");
+                        string qObjetivas = "\nQuestões objetivas são as questões que possuem 5 alternativas corretas (A,B,C,D,E) que possuem apenas uma alternativa correta";
+                        string qDescritivas = "\nQuestões descritivas: são questões abertas. Ou seja, são perguntas onde você terá que ESCREVER as respostas.";                       
+                        Console.WriteLine("1 - Tipos de questões: \n{0}\n{1}", qObjetivas, qDescritivas);
+
+                        string instrucoesCadastro = "\nPara cadastrar uma prova, inicialmente a quantidade de questões descritivas e de questões objetivas deve ser informada";
+                        Console.WriteLine("2 - Cadastrar: \n{0}", instrucoesCadastro);
+                        Console.WriteLine("\nPressione a tecla ENTER para continuar: ");
                         Console.ReadKey();
                         break;
                     case 2:

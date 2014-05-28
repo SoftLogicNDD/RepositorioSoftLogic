@@ -8,23 +8,23 @@ namespace Rafael
 {
     class Program
     {
-        public static int totalDeQuestoes;
-        public static int questoesObjetivas=5;
-        public static int questoesDescritivas=5;
+        public static int TotalDeQuestoes;
+        public static int QuestoesObjetivas = 5;
+        public static int QuestoesDescritivas = 5;
 
         public static string[] CadastroDeEnunciadoDaProva()
         {
-           
-             totalDeQuestoes = questoesDescritivas + questoesObjetivas;
-            string[] enunciadosDescritivas = new string[questoesDescritivas];
-            string[] enunciadosObjetivas = new string[questoesObjetivas];
-           string[] todasQuestoes = new string[totalDeQuestoes];
-            
 
-            if (questoesDescritivas > 0)
+            TotalDeQuestoes = QuestoesDescritivas + QuestoesObjetivas;
+            string[] enunciadosDescritivas = new string[QuestoesDescritivas];
+            string[] enunciadosObjetivas = new string[QuestoesObjetivas];
+            string[] todasQuestoes = new string[TotalDeQuestoes];
+
+
+            if (QuestoesDescritivas > 0)
             {
                 Console.WriteLine("cadastro de questoes descritivas");
-                for (int i = 0; i < questoesDescritivas; i++)
+                for (int i = 0; i < QuestoesDescritivas; i++)
                 {
                     Console.WriteLine("digite o enunciado das questoes descritivas:");
                     enunciadosDescritivas[i] = Console.ReadLine();
@@ -34,10 +34,10 @@ namespace Rafael
             {
                 Console.WriteLine("não há questões descritivas para cadastro...");
             }
-            if (questoesObjetivas > 0)
+            if (QuestoesObjetivas > 0)
             {
                 Console.WriteLine("cadastro de questoes objetivas");
-                for (int i = 0; i < questoesObjetivas; i++)
+                for (int i = 0; i < QuestoesObjetivas; i++)
                 {
                     Console.WriteLine("digite o enunciado das questoes objetivas:");
                     enunciadosObjetivas[i] = Console.ReadLine();
@@ -48,30 +48,30 @@ namespace Rafael
             {
                 Console.WriteLine("não há questões objetivas para cadastro...");
             }
-            if (questoesDescritivas > 0 && questoesObjetivas > 0)
+            if (QuestoesDescritivas > 0 && QuestoesObjetivas > 0)
             {
-                for (int i = 0; i < questoesObjetivas; i++)
+                for (int i = 0; i < QuestoesObjetivas; i++)
                 {
                     todasQuestoes[i] = enunciadosObjetivas[i];
                 }
                 int countDesc = 0;
-                for (int i = questoesObjetivas; i < totalDeQuestoes; i++)
+                for (int i = QuestoesObjetivas; i < TotalDeQuestoes; i++)
                 {
                     todasQuestoes[i] = enunciadosDescritivas[countDesc];
                     countDesc++;
                 }
             }
-            else if (questoesDescritivas > 0 && questoesObjetivas == 0)
+            else if (QuestoesDescritivas > 0 && QuestoesObjetivas == 0)
             {
-                for (int i = 0; i <= totalDeQuestoes; i++)
+                for (int i = 0; i <= TotalDeQuestoes; i++)
                 {
                     todasQuestoes[i] = enunciadosDescritivas[i];
                 }
             }
-            else if (questoesObjetivas > 0 && questoesDescritivas == 0)
+            else if (QuestoesObjetivas > 0 && QuestoesDescritivas == 0)
             {
 
-                for (int i = 0; i < totalDeQuestoes; i++)
+                for (int i = 0; i < TotalDeQuestoes; i++)
                 {
                     todasQuestoes[i] = enunciadosObjetivas[i];
                 }
@@ -80,7 +80,7 @@ namespace Rafael
             {
                 Console.WriteLine("quantidade de questoes invalida");
             }
-            for (int i = 0; i < totalDeQuestoes; i++)
+            for (int i = 0; i < TotalDeQuestoes; i++)
             {
                 Console.WriteLine(todasQuestoes[i]);
             }
@@ -88,12 +88,12 @@ namespace Rafael
 
 
             return todasQuestoes;
-           
+
         }
 
         public static string[] CadastraAlternativasDaprova()
         {
-            string[] alternativas = new string[questoesObjetivas];
+            string[] alternativas = new string[QuestoesObjetivas];
             Console.WriteLine("cadastro de alternativas:");
             char[] letras = new char[5];
             letras[0] = 'A';
@@ -101,7 +101,7 @@ namespace Rafael
             letras[2] = 'C';
             letras[3] = 'D';
             letras[4] = 'E';
-            for (int i = 0; i < questoesObjetivas; i++)
+            for (int i = 0; i < QuestoesObjetivas; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
@@ -126,16 +126,16 @@ namespace Rafael
             switch (opc)
             {
                 case 1:
-                    
+
                     break;
                 case 2:
                     break;
                 case 3:
                     break;
-                case 4:                    
-                 for (int i = 0; i < totalDeQuestoes; i++)
+                case 4:
+                    for (int i = 0; i < TotalDeQuestoes; i++)
                     {
-                        Console.WriteLine(todasQuestoes[i]);
+                        //Console.WriteLine(todasQuestoes[i]);
                     }
                     break;
                 default:

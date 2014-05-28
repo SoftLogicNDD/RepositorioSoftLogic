@@ -13,14 +13,12 @@ namespace Lucas
         public static int QuestoesDescritivas = 5;
 
         public static string[] CadastroDeEnunciadoDaProva()
-        {
-            Console.Clear();
+        {            
             Console.WriteLine(" ========== CADASTRO ==========\n");
-
             Console.Write("Informe a quantidade de questões descritivas: ");
             QuestoesDescritivas = int.Parse(Console.ReadLine());
             Console.Write("Informe a quantidade de questões objetivas: ");
-            QuestoesObjetivas = int.Parse(Console.ReadLine());
+            QuestoesObjetivas = int.Parse(Console.ReadLine());            
 
             TotalDeQuestoes = QuestoesDescritivas + QuestoesObjetivas;
             string[] enunciadosDescritivas = new string[QuestoesDescritivas];
@@ -29,7 +27,8 @@ namespace Lucas
 
             if (QuestoesDescritivas > 0)
             {
-                Console.WriteLine("\n===== Cadastro De Questões Descritivas =====");
+                Console.Clear();
+                Console.WriteLine("\n ===== Cadastro De Questões Descritivas =====");
                 for (int i = 0; i < QuestoesDescritivas; i++)
                 {
                     Console.WriteLine("\nDigite o enunciado das questão descritiva {0}: ", i);
@@ -38,11 +37,13 @@ namespace Lucas
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Não há questões descritivas para cadastro!");
             }
 
             if (QuestoesObjetivas > 0)
             {
+                Console.Clear();
                 Console.WriteLine("\n===== Cadastro de Questões Objetivas =====");
                 for (int i = 0; i < QuestoesObjetivas; i++)
                 {
@@ -53,6 +54,7 @@ namespace Lucas
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Mão há questões objetivas para cadastro!");
             }
 
@@ -97,8 +99,9 @@ namespace Lucas
 
         public static string[] CadastraAlternativasDaprova()
         {
+            Console.Clear();
             string[] alternativas = new string[QuestoesObjetivas];
-            Console.WriteLine("Cadastro de Alternativas: ");
+            Console.WriteLine("===== Cadastro de Alternativas =====");
             char[] letras = new char[5];
             letras[0] = 'A';
             letras[1] = 'B';
