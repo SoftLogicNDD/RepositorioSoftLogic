@@ -22,7 +22,7 @@ namespace ControleDeAvaliacao
                 {
                     Console.Clear();
                     Console.WriteLine("=========================== ATENÇÃO! ===========================");
-                    Console.WriteLine("\n\n");
+                    Console.WriteLine("\n\n\n\n\n\n\n\n ");
                     Console.WriteLine("Nome de usuário e senha não conferem! Verifique-os.\n \nAperte ENTER para continuar");
                     tentativasErradas++;
                     Console.ReadKey();
@@ -30,7 +30,9 @@ namespace ControleDeAvaliacao
                 else
                 {
                     Console.Clear();
-                    Console.Write("Sucesso: Você está logado!\n \nAperte ENTER para continuar");
+                    Console.WriteLine("=========================== HOME ===========================");
+                    Console.WriteLine("\n\n\n\n\n");
+                    Console.Write("Sucesso: Você está logado!\n\n\n\n\nAperte ENTER para continuar");
                     Console.ReadKey();
                     Console.Clear();
                 }
@@ -66,6 +68,8 @@ namespace ControleDeAvaliacao
                             break;                        
                         case 5:
                             Console.Clear();
+                            Console.WriteLine("=========================== SAINDO ===========================");
+                            Console.WriteLine("\n\n\n\n\n\n\n\n ");
                             Console.WriteLine("Até Logo!");
                             break;
                         default:
@@ -98,6 +102,8 @@ namespace ControleDeAvaliacao
                 else
                 {
                     Console.Clear();
+                    Console.WriteLine("=========================== HOME ===========================");
+                    Console.WriteLine("\n\n");
                     Console.Write("Sucesso: Você está logado!\n \nAperte ENTER para continuar");
                     Console.ReadKey();
                     Console.Clear();
@@ -193,7 +199,6 @@ namespace ControleDeAvaliacao
                         string instrucoesGabarito = "O primeiro passo da geração de gabarito é informar qual é a alternativa \ncorreta das questões objetivas";
                         string instrucoesGabarito2 = "Após isso, basta informa quais são as respostas para ser ter base na \ncorreção das questões descritivas. \n3.3 - Com todas essas etapas feitas, o programa irá exibir na tela o gabarito \n(Questão e sua respectiva resposta)";
                         Console.WriteLine("\n3 - Gabarito: \n \n3.1 - {0} \n3.2 - {1}", instrucoesGabarito, instrucoesGabarito2);
-
 
                         Console.WriteLine("\nPressione a tecla ENTER para continuar: ");
                         Console.ReadKey();
