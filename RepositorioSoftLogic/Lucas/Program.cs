@@ -119,6 +119,7 @@ namespace Lucas
             }
             for (int i = 0; i < TotalDeQuestoes; i++)
             {
+                Console.WriteLine(" ========== GABARITO =========\n");
                 Console.WriteLine(todasResposta[i]);
             }
             return todasResposta;
