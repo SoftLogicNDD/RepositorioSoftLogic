@@ -48,10 +48,8 @@ namespace ControleDeAvaliacao
                 }
             } while (!status);
 
-            if (!status)
-            {
-                Console.WriteLine("Tente novamente mais tarde!");
-            }
+            if (!status)            
+                Console.WriteLine("Tente novamente mais tarde!");            
             else
             {
                 do
