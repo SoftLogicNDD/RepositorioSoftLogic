@@ -29,7 +29,6 @@ namespace Lucas
                     Console.WriteLine("\nDigite o enunciado das questão objetiva {0}: ", i);
                     int j = 0;
                     enunciadosObjetivas[i] = Console.ReadLine();
-
                 }
 
             }
@@ -38,7 +37,6 @@ namespace Lucas
                 Console.Clear();
                 Console.WriteLine("Mão há questões objetivas para cadastro!");
             }
-
             return enunciadosObjetivas;
         }
         public static string[] CadastroDeEnunciadosDeQuestoesDescritivas(int QuestoesDescritivas)
@@ -60,7 +58,6 @@ namespace Lucas
                 Console.Clear();
                 Console.WriteLine("Mão há questões objetivas para cadastro!");
             }
-
             return enunciadosDescritivas;
         }
 
@@ -78,7 +75,6 @@ namespace Lucas
             letras[4] = 'E';
             for (int i = 0; i < QuestoesObjetivas; i++)
             {
-
                 for (int j = 0; j < 5; j++)
                 {
                     Console.WriteLine("Digite a descrição da alternativa {0}, da questão {1}: ", letras[j], i);
@@ -266,7 +262,6 @@ namespace Lucas
             Console.WriteLine("enunciados descritivas");
             for (int i = 0; i < array.Length; i++)
             {
-
                 Console.WriteLine(array[i]);
             }
 
@@ -278,7 +273,7 @@ namespace Lucas
             if (tipo == 1)
             {
                 Console.Clear();
-                Console.WriteLine("respostas questoes Objetivas:");
+                Console.WriteLine("Respostas Questões Objetivas:");
                 for (int i = 0; i < QuestoesObjetivas; i++)
                 {
                     Console.WriteLine("questao:{0}", i);
@@ -311,7 +306,6 @@ namespace Lucas
                 {
                     Console.WriteLine("questao:{0}", i);
                     Console.WriteLine(array[i]);
-
                 }
             }
 
@@ -319,11 +313,11 @@ namespace Lucas
 
         public static void EditarEnunciado(string[] array, int pos)
         {
-
+            Console.Write("Informe o código da prova para ser editada: ");
             array[pos] = Console.ReadLine();
         }
 
-        public static string[,] alternativas;
+        public static string[,] Alternativas;
         static void Main(string[] args)
         {
             Console.WriteLine(" ========== CADASTRO ==========\n");
@@ -334,10 +328,9 @@ namespace Lucas
             TotalDeQuestoes = QuestoesDescritivas + QuestoesObjetivas;
             string[] EnunciadosObjetivas = CadastroDeEnunciadosDeQuestoesObjetivas(QuestoesObjetivas);
 
-
             if (QuestoesObjetivas > 0)
             {
-                alternativas = CadastraAlternativasDaprova(QuestoesObjetivas);
+                Alternativas = CadastraAlternativasDaprova(QuestoesObjetivas);
             }
 
             string[] EnunciadosDescritivas = CadastroDeEnunciadosDeQuestoesDescritivas(QuestoesDescritivas);
@@ -356,7 +349,10 @@ namespace Lucas
                 codigo = 1;
             }
             ImprimirGabarito(gabarito, codigo);
-            ImprimiEnunciadoObjetivas(EnunciadosObjetivas, alternativas);
+            if (QuestoesObjetivas > 0)
+            {
+                ImprimiEnunciadoObjetivas(EnunciadosObjetivas, Alternativas);
+            }
             ImprimiEnunciadosDescritivas(EnunciadosDescritivas);
             Console.Write("\n\nPressione ENTER para continuar: ");
             Console.ReadKey();
