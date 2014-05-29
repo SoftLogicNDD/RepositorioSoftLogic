@@ -51,9 +51,9 @@ namespace ControleDeAvaliacao
                 {
                     Console.Clear();
                     Console.WriteLine("=========================== ATENÇÃO! ===========================");
-                    Console.WriteLine("\n\n\n\n\n\n\n\n ");
+                    Console.WriteLine("\n\n\n\n\n\n\n\n");
                     Console.WriteLine("USUÁRIO BLOQUEADO! \nDados informados incorretamente por 3 vezes seguidas!\n");
-                    Console.WriteLine("\n\n\n\n\n\n\n\n\n ");
+                    Console.WriteLine("\n\n\n\n\n\n\n\n\n");
                     break;
                 }
             } while (!status);
@@ -177,6 +177,34 @@ namespace ControleDeAvaliacao
                             }
                             Console.ReadKey();
                             break;
+                        case 8:
+                            Console.Clear();
+                            if(EnunciadosDescritivas.Length > 0){
+                                Console.WriteLine("Informe o número da questão: ");
+                                posicao = int.Parse(Console.ReadLine());
+                                RemoveEnunciado(posicao, EnunciadosDescritivas);
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Vazio");
+                            }
+                            
+                            break;
+                        case 9:
+                            Console.Clear();
+                            if(EnunciadosObjetivas.Length > 0){
+                                Console.WriteLine("Informe o número da questão: ");
+                                posicao = int.Parse(Console.ReadLine());
+                                RemoveEnunciado(posicao, EnunciadosObjetivas);
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Vazio");
+                            }
+                            
+                            break;
                         case 0:
                             Console.Clear();
                             Console.WriteLine("=========================== SAINDO ===========================");
@@ -205,6 +233,8 @@ namespace ControleDeAvaliacao
             Console.WriteLine("5 - Imprimir Gabarito");
             Console.WriteLine("6 - Editar Objetivas");
             Console.WriteLine("7 - Editar Descritivas");
+            Console.WriteLine("8 - Remover Enunciado Descritiva");
+            Console.WriteLine("9 - Remover Enunciado Objetiva");
             Console.WriteLine("0 - Encerrar o programa.");
             Console.WriteLine("\n\n\n\n\n");
             Console.Write("Informe a opção desejada: ");
@@ -535,5 +565,134 @@ namespace ControleDeAvaliacao
             }
         }
 
+        public static void RemoveEnunciado(int posicao, string[] array)
+        {
+            if (!VerificaPosicao(posicao))
+            {
+                Console.WriteLine("Posição inválida");
+            }
+            for (int i = posicao; i < TotalDeQuestoes-1; i++)
+            {
+                array[i] = null;
+            }
+
+            TotalDeQuestoes--;
+        }
+        public static void RemoveResposta(int posicao, string[] array)
+        {
+            if (!VerificaPosicao(posicao))
+            {
+                Console.WriteLine("Posição inválida");
+
+            }
+            for (int i = posicao; i < TotalDeQuestoes - 1; i++)
+            {
+
+                array[i] = null;
+            }
+            TotalDeQuestoes--;
+        }
+
+        public static void GeraGabaritosDeProvasEstaticas()
+        {            
+            string[] respostasProvaObjetiva = new string[10];
+            string[] respostasProvaObjetiva2 = new string[10];
+            string[] respostasProvaDescritiva = new string[10];
+            string[] respostasProvaMesclada = new string[10];
+            string[] enunciadoProvaObjetiva = new string[10];
+            string[] enunciadoProvaObjetiva2 = new string[10];
+            string[] enunciadoProvaDescritiva = new string[10];
+            string[] enunciadoProvaMesclada = new string[10];
+            char[] alternativas = new char[5];
+            char[] alternativasRandomicas = "ABCDE".ToCharArray();
+            string[] enunciadosProvaMescladaDescritivas = { "teorema de pitagoras", "teorema de tio chiquinho", "teorema do thiago", "teorema do pa e bola", "teorema do zé", "teorema do tio patinhas", "teorema do tio sam", "teorema do tio pinga" };
+            int t;
+            Random rnd = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                t = rnd.Next(alternativasRandomicas.Length);
+                alternativas[i] = alternativasRandomicas[t];
+            }
+
+            //gabarito das 4 provas uma seguinte das outras;
+            for (int j = 0; j < 10; j++)
+            {
+                enunciadoProvaObjetiva[j] = "Enunciado da questao " + j + " da prova objetiva 1";
+                respostasProvaObjetiva[j] = "Resposta: " + "- " + j;
+                enunciadoProvaObjetiva2[j] = "Enunciado da questao " + j + " da prova objetiva 2";
+                respostasProvaObjetiva2[j] = "Resposta: " + "- " + j;
+            }
+            int l = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                enunciadoProvaDescritiva[i] = "Enunciado da questao " + i + " da prova descritiva";
+                l = rnd.Next(enunciadosProvaMescladaDescritivas.Length);
+                respostasProvaDescritiva[i] = enunciadosProvaMescladaDescritivas[l];
+            }
+            int count1 = 0;
+            Console.WriteLine("===== Prova 1 (Prova Objetiva 1) =====\n");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(enunciadoProvaObjetiva[i]);
+                Console.WriteLine("Alternativa " + alternativas[count1] + " " + respostasProvaObjetiva[i]);
+                count1++;
+                if (count1 == 3)
+                {
+                    count1 = 0;
+                }
+            }
+            Console.WriteLine("===== Prova 2 (Prova Objetiva 2) =====\n");
+            int count2 = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(enunciadoProvaObjetiva2[i]);
+                Console.WriteLine("Alternativa " + alternativas[count2] + " " + respostasProvaObjetiva2[i]);
+                count2++;
+                if (count2 == 3)
+                {
+                    count2 = 0;
+                }
+            }
+
+            int count3 = 0;
+            Console.WriteLine("Prova 3 (Prova Descritiva)\n");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(enunciadoProvaDescritiva[i]);
+                Console.WriteLine("Alternativa " + alternativas[count3] + " " + respostasProvaDescritiva[i]);
+                count3++;
+                if (count3 == 3)
+                {
+                    count3 = 0;
+                }
+            }
+
+            int k = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                enunciadoProvaMesclada[i] = "Enunciado da questao " + i + " da prova mesclada";
+                k = rnd.Next(enunciadosProvaMescladaDescritivas.Length);
+                respostasProvaMesclada[i] = "Resposta " + enunciadosProvaMescladaDescritivas[k];
+            }
+            for (int i = 5; i < 10; i++)
+            {
+                enunciadoProvaMesclada[i] = "Enunciado da questao " + i + " da prova mesclada";
+                respostasProvaMesclada[i] = "Resposta " + "- " + i;
+            }
+
+            Console.WriteLine("===== Prova 4 (Prova Mesclada) =====\n");
+            int count4 = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(enunciadoProvaMesclada[i]);
+                Console.WriteLine("Alternativa " + alternativas[count4] + " " + respostasProvaMesclada[i]);
+                count4++;
+                if (count4 == 3)
+                {
+                    count4 = 0;
+                }
+            }
+        }
     }
 }
