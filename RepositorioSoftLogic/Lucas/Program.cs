@@ -317,10 +317,63 @@ namespace Lucas
 
         }
 
+        public void RemoveEnunciado(int posicao,string []array)
+        {
+            if (!VerificaPosicao(posicao))
+            {
+                Console.WriteLine("Posição inválida");
+               
+            }
+            for (int i = posicao; i < TotalDeQuestoes - 1; i++)
+            {
+               array[i] = array[i + 1];
+            }
+           TotalDeQuestoes--;
+        }
+        public void RemoveResposta(int posicao, string[] array)
+        {
+            if (!VerificaPosicao(posicao))
+            {
+                Console.WriteLine("Posição inválida");
+
+            }
+            for (int i = posicao; i < TotalDeQuestoes - 1; i++)
+            {
+
+                array[i] = array[i + 1];
+            }
+            TotalDeQuestoes--;
+        }
+
+
+        public static bool VerificaPosicao(int posicao)
+        {
+            return posicao >= 0 && posicao <= TotalDeQuestoes;
+        }
+
         public static void EditarEnunciado(string[] array, int pos)
         {
+            if (VerificaPosicao(pos))
+            {
+                array[pos] = Console.ReadLine();
+            }
+            
+        }
+        public static void EditarAlternativa(string[] array, int pos)
+        {
+            if (VerificaPosicao(pos))
+            {
+                array[pos] = Console.ReadLine();
+            }
 
-            array[pos] = Console.ReadLine();
+        }
+        public static void EditarResposta(string[] array, int pos)
+        {
+            if (VerificaPosicao(pos))
+            {
+                array[pos] = Console.ReadLine();
+            }
+
         }
 
         public static string[,] alternativas;
