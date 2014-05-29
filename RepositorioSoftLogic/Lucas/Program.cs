@@ -379,7 +379,6 @@ namespace Lucas
             {
                 array[pos] = Console.ReadLine();
             }
-
         }
 
         public static string[,] Alternativas;

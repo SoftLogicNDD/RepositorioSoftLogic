@@ -15,10 +15,11 @@ namespace ControleDeAvaliacao
         public static int QuestoesDescritivas;
         public static int TotalDeQuestoes;
         public static string[,] Alternativas;
-        public static int codigo;
-        public static string[] respostas;
+        public static int Codigo;
+        public static string[] Gabarito;
         public static string[] EnunciadosObjetivas;
         public static string[] EnunciadosDescritivas;
+        public static int posicao;
 
         static void Main(string[] args)
         {
@@ -80,17 +81,18 @@ namespace ControleDeAvaliacao
                                 EnunciadosObjetivas = CadastroDeEnunciadosDeQuestoesObjetivas(QuestoesObjetivas);
                                 Alternativas = CadastraAlternativasDaprova(QuestoesObjetivas);
                                 EnunciadosDescritivas = CadastroDeEnunciadosDeQuestoesDescritivas(QuestoesDescritivas);
-                                codigo = 3;
+                                Codigo = 3;
                             }
-                            if (QuestoesDescritivas > 0 && QuestoesObjetivas == 0){
-                                 EnunciadosDescritivas = CadastroDeEnunciadosDeQuestoesDescritivas(QuestoesDescritivas);
-                                codigo = 2;
+                            if (QuestoesDescritivas > 0 && QuestoesObjetivas == 0)
+                            {
+                                EnunciadosDescritivas = CadastroDeEnunciadosDeQuestoesDescritivas(QuestoesDescritivas);
+                                Codigo = 2;
                             }
                             if (QuestoesDescritivas == 0 && QuestoesObjetivas > 0)
                             {
                                 EnunciadosObjetivas = CadastroDeEnunciadosDeQuestoesObjetivas(QuestoesObjetivas);
                                 Alternativas = CadastraAlternativasDaprova(QuestoesObjetivas);
-                                codigo = 1;
+                                Codigo = 1;
                             }
                             if (QuestoesDescritivas == 0 && QuestoesObjetivas == 0)
                             {
@@ -98,12 +100,13 @@ namespace ControleDeAvaliacao
                             }
                             break;
                         case 2:
-                            respostas = GerarGabarito(QuestoesObjetivas, QuestoesDescritivas);
+                            Gabarito = GerarGabarito(QuestoesObjetivas, QuestoesDescritivas);
                             break;
                         case 3:
                             Console.Clear();
-                            if(QuestoesObjetivas > 0){
-                                ImprimiEnunciadoObjetivas(EnunciadosObjetivas, Alternativas);                                
+                            if (QuestoesObjetivas > 0)
+                            {
+                                ImprimiEnunciadoObjetivas(EnunciadosObjetivas, Alternativas);
                             }
                             if (QuestoesObjetivas == 0)
                             {
@@ -113,16 +116,36 @@ namespace ControleDeAvaliacao
                             break;
                         case 4:
                             Console.Clear();
-                           if(QuestoesDescritivas > 0){
-                               ImprimiEnunciadosDescritivas(EnunciadosDescritivas);
-                           }
-                           if (QuestoesDescritivas == 0)
-                           {
-                               Console.WriteLine("Atenção: não há descritivas");
-                           }
-                           Console.ReadKey();
+                            if (QuestoesDescritivas > 0)
+                            {
+                                ImprimiEnunciadosDescritivas(EnunciadosDescritivas);
+                            }
+                            if (QuestoesDescritivas == 0)
+                            {
+                                Console.WriteLine("Atenção: não há descritivas");
+                            }
+                            Console.ReadKey();
                             break;
                         case 5:
+                            Console.Clear();
+                            ImprimirGabarito(Gabarito, Codigo);
+                            Console.ReadKey();
+                            break;
+                        case 6:
+                            Console.Clear();
+                            Console.WriteLine("Informe o número da questão: ");
+                            posicao = int.Parse(Console.ReadLine());
+                            EditarEnunciado(EnunciadosObjetivas, posicao);
+                            Console.ReadKey();
+                            break;
+                        case 7:
+                            Console.Clear();
+                            Console.WriteLine("Informe o número da questão: ");
+                            posicao = int.Parse(Console.ReadLine());
+                            EditarEnunciado(EnunciadosDescritivas, posicao);
+                            Console.ReadKey();
+                            break;
+                        case 0:
                             Console.Clear();
                             Console.WriteLine("=========================== SAINDO ===========================");
                             Console.WriteLine("\n\n\n\n\n\n\n\n ");
@@ -134,7 +157,7 @@ namespace ControleDeAvaliacao
                             Console.ReadKey();
                             break;
                     }
-                } while (OpcaoMenu != 5);
+                } while (OpcaoMenu != 0);
             }
             Console.ReadKey();
         }
@@ -147,8 +170,10 @@ namespace ControleDeAvaliacao
             Console.WriteLine("2 - Gerar Gabarito");
             Console.WriteLine("3 - Imprimir Enunciados Objetivas");
             Console.WriteLine("4 - Imprimir Enunciados Descritivas");
-            Console.WriteLine("X - Sobre (Nomes da equipe e nome da empresa)");
-            Console.WriteLine("5 - Encerrar o programa.");
+            Console.WriteLine("5 - Imprimir Gabarito");
+            Console.WriteLine("6 - Editar Objetivas");
+            Console.WriteLine("7 - Editar Descritivas");
+            Console.WriteLine("0 - Encerrar o programa.");
             Console.WriteLine("\n\n\n\n\n\n\n\n");
             Console.Write("Informe a opção desejada: ");
             return int.Parse(Console.ReadLine());
@@ -385,7 +410,85 @@ namespace ControleDeAvaliacao
             {
                 Console.WriteLine(array[i]);
             }
+        }
 
+        public static void ImprimirGabarito(string[] array, int tipo)
+        {
+
+            if (tipo == 1)
+            {
+                Console.Clear();
+                Console.WriteLine("Respostas Questões Objetivas:");
+                for (int i = 0; i < QuestoesObjetivas; i++)
+                {
+                    Console.WriteLine("questao:{0}", i);
+                    Console.WriteLine(array[i]);
+                }
+            }
+            if (tipo == 2)
+            {
+                Console.Clear();
+                Console.WriteLine("respostas questoes descritivas:");
+                for (int i = 0; i < QuestoesDescritivas; i++)
+                {
+                    Console.WriteLine("questao:{0}", i);
+                    Console.WriteLine(array[i]);
+                }
+            }
+            if (tipo == 3)
+            {
+                Console.Clear();
+                Console.WriteLine("respostas de todas as questoes:");
+                Console.WriteLine("respostas das questoes objetivas:");
+                for (int i = 0; i < QuestoesObjetivas; i++)
+                {
+                    Console.WriteLine("questao:{0}", i);
+                    Console.WriteLine(array[i]);
+                }
+
+                Console.WriteLine("respostas das questoes descritivas:");
+                for (int i = QuestoesObjetivas; i < TotalDeQuestoes; i++)
+                {
+                    Console.WriteLine("questao:{0}", i);
+                    Console.WriteLine(array[i]);
+                }
+            }
+        }
+
+        public static bool VerificaPosicao(int posicao)
+        {
+            return posicao >= 0 && posicao <= TotalDeQuestoes;
+        }
+
+        public static void EditarEnunciado(string[] array, int pos)
+        {
+            if (VerificaPosicao(pos))
+            {
+                Console.WriteLine("Enunciado antigo: {0}", array[pos]);
+                Console.WriteLine("Informe o enunciado novo: ");
+                array[pos] = Console.ReadLine();
+                Console.WriteLine("Novo Enunciado: {0}", array[pos]);
+            }
+            else
+            {
+                Console.WriteLine("ATENÇÃO: Posição é inválida!");
+            }
+
+        }
+        public static void EditarAlternativa(string[] array, int pos)
+        {
+            if (VerificaPosicao(pos))
+            {
+                array[pos] = Console.ReadLine();
+            }
+
+        }
+        public static void EditarResposta(string[] array, int pos)
+        {
+            if (VerificaPosicao(pos))
+            {
+                array[pos] = Console.ReadLine();
+            }
         }
 
     }
