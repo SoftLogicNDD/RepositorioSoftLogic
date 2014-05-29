@@ -205,6 +205,12 @@ namespace ControleDeAvaliacao
                             }
                             
                             break;
+                        case 10:
+                            MostrarAjuda();
+                            break;
+                        case 11:
+                            MostrarSobre();
+                            break;
                         case 0:
                             Console.Clear();
                             Console.WriteLine("=========================== SAINDO ===========================");
@@ -582,7 +588,6 @@ namespace ControleDeAvaliacao
             if (!VerificaPosicao(posicao))
             {
                 Console.WriteLine("Posição inválida");
-
             }
             
 
