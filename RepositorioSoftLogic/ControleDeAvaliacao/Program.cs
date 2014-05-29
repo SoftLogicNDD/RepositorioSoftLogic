@@ -571,10 +571,9 @@ namespace ControleDeAvaliacao
             {
                 Console.WriteLine("Posição inválida");
             }
-            for (int i = posicao; i < TotalDeQuestoes-1; i++)
-            {
-                array[i] = null;
-            }
+            
+                array[posicao] = null;
+            
 
             TotalDeQuestoes--;
         }
@@ -585,11 +584,10 @@ namespace ControleDeAvaliacao
                 Console.WriteLine("Posição inválida");
 
             }
-            for (int i = posicao; i < TotalDeQuestoes - 1; i++)
-            {
+            
 
-                array[i] = null;
-            }
+                array[posicao] = null;
+            
             TotalDeQuestoes--;
         }
 
