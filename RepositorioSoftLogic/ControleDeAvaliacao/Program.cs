@@ -136,6 +136,32 @@ namespace ControleDeAvaliacao
                             Console.WriteLine("Informe o número da questão: ");
                             posicao = int.Parse(Console.ReadLine());
                             EditarEnunciado(EnunciadosObjetivas, posicao);
+                            Console.WriteLine("Deseja alterar a resposta de alguma questão(S/N): ");
+                            string cont = Console.ReadLine();
+                            if(cont.ToUpper() == "S"){
+                                Console.WriteLine("Informe o número da questão: ");
+                                posicao = int.Parse(Console.ReadLine());
+                                Console.WriteLine("Informe a nova resposta: ");
+                                string alternativa = Console.ReadLine();
+                                switch (alternativa.ToUpper())
+                                {
+                                    case "A":
+                                        EditarAlternativa(Alternativas, posicao, 0);
+                                        break;
+                                    case "B":
+                                        EditarAlternativa(Alternativas, posicao, 1);
+                                        break;
+                                    case "C":
+                                        EditarAlternativa(Alternativas, posicao, 2);
+                                        break;
+                                    case "D":
+                                        EditarAlternativa(Alternativas, posicao, 3);
+                                        break;
+                                    case "E":
+                                        EditarAlternativa(Alternativas, posicao, 4);
+                                        break;
+                                }
+                            }
                             Console.ReadKey();
                             break;
                         case 7:
@@ -143,6 +169,12 @@ namespace ControleDeAvaliacao
                             Console.WriteLine("Informe o número da questão: ");
                             posicao = int.Parse(Console.ReadLine());
                             EditarEnunciado(EnunciadosDescritivas, posicao);
+                            Console.WriteLine("Deseja alterar a resposta da questão(S/N): ");
+                            string opc = Console.ReadLine();
+                            if (opc.ToUpper() == "S")
+                            {
+                                EditarResposta(Gabarito,posicao);
+                            }
                             Console.ReadKey();
                             break;
                         case 0:
@@ -165,7 +197,7 @@ namespace ControleDeAvaliacao
         public static int MostrarMenu()
         {
             Console.WriteLine("=========================== MENU ===========================");
-            Console.WriteLine("\n\n\n\n\n\n\n");
+            Console.WriteLine("\n\n\n\n");
             Console.WriteLine("1 - Cadastrar Prova (Opcional)");
             Console.WriteLine("2 - Gerar Gabarito");
             Console.WriteLine("3 - Imprimir Enunciados Objetivas");
@@ -174,7 +206,7 @@ namespace ControleDeAvaliacao
             Console.WriteLine("6 - Editar Objetivas");
             Console.WriteLine("7 - Editar Descritivas");
             Console.WriteLine("0 - Encerrar o programa.");
-            Console.WriteLine("\n\n\n\n\n\n\n\n");
+            Console.WriteLine("\n\n\n\n\n");
             Console.Write("Informe a opção desejada: ");
             return int.Parse(Console.ReadLine());
         }
@@ -475,19 +507,31 @@ namespace ControleDeAvaliacao
             }
 
         }
-        public static void EditarAlternativa(string[] array, int pos)
+        public static void EditarAlternativa(string[,] array, int posq,int posa)
         {
-            if (VerificaPosicao(pos))
-            {
-                array[pos] = Console.ReadLine();
-            }
 
+            if (VerificaPosicao(posq))
+            {
+                Console.WriteLine("Alternativa: {0}", array[posq,posa]);                
+                Console.WriteLine("Nova Alternativa correta: {0}", array[posq,posa]);
+            }
+            else
+            {
+                Console.WriteLine("ATENÇÃO: Posição é inválida!");
+            }
         }
         public static void EditarResposta(string[] array, int pos)
         {
             if (VerificaPosicao(pos))
             {
+                Console.WriteLine("Resposta: {0}", array[pos]);
+                Console.WriteLine("Informe a resposta certa: ");
                 array[pos] = Console.ReadLine();
+                Console.WriteLine("Nova resposta correta: {0}", array[pos]);
+            }
+            else
+            {
+                Console.WriteLine("ATENÇÃO: Posição é inválida!");
             }
         }
 
