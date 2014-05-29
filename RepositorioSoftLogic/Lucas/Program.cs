@@ -241,7 +241,7 @@ namespace Lucas
             }
             ImprimiAlternativasQuestoesObjetivas(array2);
         }
-
+       
         public static void ImprimiAlternativasQuestoesObjetivas(string[,] array)
         {
 
