@@ -622,17 +622,13 @@ namespace ControleDeAvaliacao
 
         public static void RemoveEnunciado(int posicao, string[] array)
         {
-
-
             if (!VerificaPosicao(posicao))
             {
                 Console.WriteLine("Posição inválida");
             }
-
             array[posicao] = null;
-
-
             TotalDeQuestoes--;
+            Console.WriteLine("Aperte ENTER para continuar: ");
         }
         public static void RemoveResposta(int posicao, string[] array)
         {
@@ -640,10 +636,7 @@ namespace ControleDeAvaliacao
             {
                 Console.WriteLine("Posição inválida");
             }
-
-
             array[posicao] = null;
-
             TotalDeQuestoes--;
         }
 
