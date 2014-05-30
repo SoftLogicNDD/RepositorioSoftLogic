@@ -395,9 +395,10 @@ namespace ControleDeAvaliacao
             letras[4] = 'E';
             for (int i = 0; i < QuestoesObjetivas; i++)
             {
-                Console.Clear();
+                
                 for (int j = 0; j < 5; j++)
                 {
+                    Console.Clear();
                     Console.WriteLine("===== Cadastro de Alternativas =====");
                     Console.WriteLine("Digite a descrição da alternativa {0}, da questão {1}: ", letras[j], i);
                     alternativas[i] = Console.ReadLine();
@@ -416,13 +417,13 @@ namespace ControleDeAvaliacao
             string[] todasResposta = new string[QuestoesDescritivas + QuestoesObjetivas];
             for (int i = 0; i < QuestoesObjetivas; i++)
             {
-                Console.WriteLine("Cadastro de respostas das questoes objetivas");
+                Console.WriteLine("\n ----- Cadastro de respostas das questoes objetivas ----- ");
                 Console.WriteLine("Qual é a alternativa certa da questão {0}: ", i);
                 alternativaCerta[i] = Console.ReadLine();
             }
             for (int i = 0; i < QuestoesDescritivas; i++)
             {
-                Console.WriteLine("Cadastro das respostas das questoes descritivas");
+                Console.WriteLine("\n ----- Cadastro das respostas das questoes descritivas ----");
                 Console.WriteLine("Digite a resposta descritiva certa da questão {0}: ", i);
                 RespostaCertaDescritiva[i] = Console.ReadLine();
             }
