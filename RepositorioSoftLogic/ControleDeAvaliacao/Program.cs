@@ -110,7 +110,7 @@ namespace ControleDeAvaliacao
                             }
                             if (QuestoesObjetivas == 0)
                             {
-                                Console.WriteLine("Atenção: não há objetivas");
+                                Console.WriteLine("ATENÇÃO: Não há questões objetivas cadastradas!");
                             }
                             Console.ReadKey();
                             break;
@@ -122,7 +122,7 @@ namespace ControleDeAvaliacao
                             }
                             if (QuestoesDescritivas == 0)
                             {
-                                Console.WriteLine("Atenção: não há descritivas");
+                                Console.WriteLine("ATENÇÃO: Não há questões descritivas cadastradas!");
                             }
                             Console.ReadKey();
                             break;
@@ -342,8 +342,6 @@ namespace ControleDeAvaliacao
 
             if (QuestoesObjetivas > 0)
             {
-
-
                 for (int i = 0; i < QuestoesObjetivas; i++)
                 {
                     Console.Clear();
@@ -397,14 +395,14 @@ namespace ControleDeAvaliacao
             letras[4] = 'E';
             for (int i = 0; i < QuestoesObjetivas; i++)
             {
+                Console.Clear();
                 for (int j = 0; j < 5; j++)
                 {
                     Console.WriteLine("===== Cadastro de Alternativas =====");
                     Console.WriteLine("Digite a descrição da alternativa {0}, da questão {1}: ", letras[j], i);
                     alternativas[i] = Console.ReadLine();
                     todasAlternativas[i, j] = alternativas[i];
-                }
-                Console.Clear();
+                }               
             }
             return todasAlternativas;
         }
@@ -541,12 +539,13 @@ namespace ControleDeAvaliacao
                 Console.WriteLine("Enunciado antigo: {0}", array[pos]);
                 Console.WriteLine("Informe o enunciado novo: ");
                 array[pos] = Console.ReadLine();
-                Console.WriteLine("Novo Enunciado: {0}", array[pos]);
+                Console.WriteLine("AVISO: Enunciado alterado com sucesso\nNovo Enunciado: {0}", array[pos]);
             }
             else
             {
                 Console.WriteLine("ATENÇÃO: Posição é inválida!");
             }
+            Console.WriteLine("Pression ENTER para continuar: ");
 
         }
         public static void EditarAlternativa(string[,] array, int posq,int posa)
@@ -555,7 +554,7 @@ namespace ControleDeAvaliacao
             if (VerificaPosicao(posq))
             {
                 Console.WriteLine("Alternativa: {0}", array[posq,posa]);                
-                Console.WriteLine("Nova Alternativa correta: {0}", array[posq,posa]);
+                Console.WriteLine("AVISO: Alternativa alterada com sucesso! \nNova Alternativa correta: {0}", array[posq,posa]);
             }
             else
             {
@@ -569,12 +568,13 @@ namespace ControleDeAvaliacao
                 Console.WriteLine("Resposta: {0}", array[pos]);
                 Console.WriteLine("Informe a resposta certa: ");
                 array[pos] = Console.ReadLine();
-                Console.WriteLine("Nova resposta correta: {0}", array[pos]);
+                Console.WriteLine("AVISO: Resposta alterada com sucesso! \nNova resposta correta: {0}", array[pos]);
             }
             else
             {
                 Console.WriteLine("ATENÇÃO: Posição é inválida!");
             }
+            Console.WriteLine("Aperte ENTER para continuar: ");
         }
 
         public static void RemoveEnunciado(int posicao, string[] array)
