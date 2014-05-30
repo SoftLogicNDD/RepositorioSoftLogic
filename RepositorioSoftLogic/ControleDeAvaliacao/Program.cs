@@ -138,7 +138,8 @@ namespace ControleDeAvaliacao
                             EditarEnunciado(EnunciadosObjetivas, posicao);
                             Console.WriteLine("Deseja alterar a resposta de alguma questão(S/N): ");
                             string cont = Console.ReadLine();
-                            if(cont.ToUpper() == "S"){
+                            if (cont.ToUpper() == "S")
+                            {
                                 Console.WriteLine("Informe o número da questão: ");
                                 posicao = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Informe a nova resposta: ");
@@ -173,13 +174,14 @@ namespace ControleDeAvaliacao
                             string opc = Console.ReadLine();
                             if (opc.ToUpper() == "S")
                             {
-                                EditarResposta(Gabarito,posicao);
+                                EditarResposta(Gabarito, posicao);
                             }
                             Console.ReadKey();
                             break;
                         case 8:
                             Console.Clear();
-                            if(EnunciadosDescritivas.Length > 0){
+                            if (EnunciadosDescritivas.Length > 0)
+                            {
                                 Console.WriteLine("Informe o número da questão: ");
                                 posicao = int.Parse(Console.ReadLine());
                                 RemoveEnunciado(posicao, EnunciadosDescritivas);
@@ -189,11 +191,12 @@ namespace ControleDeAvaliacao
                             {
                                 Console.WriteLine("Vazio");
                             }
-                            
+
                             break;
                         case 9:
                             Console.Clear();
-                            if(EnunciadosObjetivas.Length > 0){
+                            if (EnunciadosObjetivas.Length > 0)
+                            {
                                 Console.WriteLine("Informe o número da questão: ");
                                 posicao = int.Parse(Console.ReadLine());
                                 RemoveEnunciado(posicao, EnunciadosObjetivas);
@@ -203,7 +206,7 @@ namespace ControleDeAvaliacao
                             {
                                 Console.WriteLine("Vazio");
                             }
-                            
+
                             break;
                         case 10:
                             Console.Clear();
@@ -247,6 +250,8 @@ namespace ControleDeAvaliacao
             Console.WriteLine("8 - Remover Enunciado Descritiva");
             Console.WriteLine("9 - Remover Enunciado Objetiva");
             Console.WriteLine("10- Imprimir Provas Estaticas (Exemplos)");
+            Console.WriteLine("11 - Ajuda");
+            Console.WriteLine("12 - Sobre");
             Console.WriteLine("0 - Encerrar o programa.");
             Console.WriteLine("\n\n\n\n\n");
             Console.Write("Informe a opção desejada: ");
@@ -268,11 +273,6 @@ namespace ControleDeAvaliacao
                 return false;
         }
 
-        static void MostrarOpcoesAjuda()
-        {
-            Console.WriteLine("1 - Cadastro \n2 - Consultas \n3 - Retornar ao Menu Inicial");
-        }
-
         static void MostrarSobre()
         {
             Console.Clear();
@@ -284,56 +284,94 @@ namespace ControleDeAvaliacao
             Console.ReadKey();
         }
 
-        static void MostrarAjuda()
+        public static void MostrarAjuda()
         {
-            int opcaoMenuAjuda = 0;
+            int opc = 0;
             do
             {
                 Console.Clear();
-                Console.WriteLine(" ===== AJUDA =====");
-                MostrarOpcoesAjuda();
-                Console.Write("\nInforme a opção desejada: ");
-                opcaoMenuAjuda = int.Parse(Console.ReadLine());
-                switch (opcaoMenuAjuda)
+                Console.WriteLine(" ========== MENU AJUDA (?) ==========");
+                Console.WriteLine("\nSelecione uma das opções abaixo para obter ajuda sobre a funcionalidade");
+                Console.WriteLine("1 - CADASTRO DE PROVAS");
+                Console.WriteLine("2 - GERAR GABARITOS");
+                Console.WriteLine("3 - EXIBIR QUESTÕES OBJETIVAS");
+                Console.WriteLine("4 - EXIBIR QUESTÕES DESCRITIVAS");
+                Console.WriteLine("5 - EXIBIR GABARITO");
+                Console.WriteLine("6 - EDITAR OBJETIVAS");
+                Console.WriteLine("7 - EDITAR DESCRITIVAS");
+                Console.WriteLine("8 - REMOVER ENUNCIADO DESCRITIVAS");
+                Console.WriteLine("9 - REMOVER ENUNCIADO OBJETIVAS");
+                Console.WriteLine("10 - EXIBIR EXEMPLO DE PROVAS");
+                Console.WriteLine("0 - RETORNAR AO MENU PRINCIPAL");
+                Console.WriteLine("\n\nInforme a opção que deseja: ");
+                opc = Convert.ToInt32(Console.ReadLine());                
+                switch (opc)
                 {
                     case 1:
-                        Console.Clear();
-                        Console.WriteLine(" ===== AJUDA - CADASTRO ===== \n");
-
-                        string qObjetivas = "\nQuestões objetivas são as questões que possuem 5 alternativas corretas (A,B,C,D,E) que possuem apenas uma alternativa correta";
-                        string qDescritivas = "\nQuestões descritivas: são questões abertas. Ou seja, são perguntas onde você \nterá que ESCREVER as respostas.";
-                        Console.WriteLine("1 - Tipos de questões: \n{0}\n{1}", qObjetivas, qDescritivas);
-
-                        string instrucoesCadastro = "Para cadastrar uma prova, inicialmente o usuário deve informar a \nquantidade de questões descritivas e de questões objetivas.";
-                        string instrucoesCadastro2 = "Em seguida, o usuário irá informar o enunciado das questões descritivas e das questões objetivas";
-                        string instrucoesCadastro3 = "A próxima etapa consiste em cadastrar a descrição das alternativas que \npertencem as questões objetivas";
-                        Console.WriteLine("\n2 - Cadastrar: \n \n2.1 - {0}\n2.2 - {1}\n2.3 - {2}\n", instrucoesCadastro, instrucoesCadastro2, instrucoesCadastro3);
-
-                        string instrucoesGabarito = "O primeiro passo da geração de gabarito é informar qual é a alternativa \ncorreta das questões objetivas";
-                        string instrucoesGabarito2 = "Após isso, basta informa quais são as respostas para ser ter base na \ncorreção das questões descritivas. \n3.3 - Com todas essas etapas feitas, o programa irá exibir na tela o gabarito \n(Questão e sua respectiva resposta)";
-                        Console.WriteLine("\n3 - Gabarito: \n \n3.1 - {0} \n3.2 - {1}", instrucoesGabarito, instrucoesGabarito2);
-
-                        Console.WriteLine("\nPressione a tecla ENTER para continuar: ");
+                        Console.WriteLine("\nRealiza o cadastro da prova a partir da quantidade informada de questões descritivas com seus respectivos enunciados e de questões objetivas com seus enunciados incluindo as alternativas de A a E com uma opção correta.");
+                        Console.WriteLine("Aperte ENTER para continuar");
                         Console.ReadKey();
                         break;
                     case 2:
-                        Console.Clear();
-                        Console.WriteLine(" ===== AJUDA - CONSULTA ===== \nAperte ENTER para continuar");
+                        Console.WriteLine("\nGera o gabarito das provas objetivas cadastradas e sua opção certa, e também gera a resposta das descritivas.");
+                        Console.WriteLine("\nAperte ENTER para continuar");
                         Console.ReadKey();
                         break;
                     case 3:
-                        Console.Clear();
-                        Console.WriteLine("Aperte ENTER para continuar");
+                        Console.WriteLine("\nExibe as questões objetivas anteriormente cadastradas pelo usuário (Questões objetivas possuem enunciado e opções de A a E sendo que somente uma é a correta)");
+                        Console.WriteLine("\nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 4:
+                        Console.WriteLine("\nExibe as questões descritivas anteriormente cadastradas pelo usuário (Possuem um enunciado da pergunta e uma resposta descrita)");
+                        Console.WriteLine("\nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 5:
+                        Console.WriteLine("\nExibe gabarito com respostas das questões objetivas respectivamente apontadas com uma opção de A a E, e as questões descritivas com a resposta escrita");
+                        Console.WriteLine("\nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 6:
+                        Console.WriteLine("\nEdita as respostas alternativas (A a E) colocadas como correta na resposta da questão");
+                        Console.WriteLine("\nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 7:
+                        Console.WriteLine("\nEdita as respostas nas perguntas descritivas colocadas anteriormente");
+                        Console.WriteLine("\nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 8:
+                        Console.WriteLine("\nRemove o enunciado da questão descritiva, a pergunta anteriormente posta");
+                        Console.WriteLine("\nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 9:
+                        Console.WriteLine("\nRemove o enunciado da questão objetiva, a pergunta anteriormente posta");
+                        Console.WriteLine("\nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 10:
+                        Console.WriteLine("\nExibir provas ja elaboradas estaticamente de exemplo");
+                        Console.WriteLine("\nAperte ENTER para continuar");
+                        Console.ReadKey();
+                        break;
+                    case 0:
+                        Console.WriteLine("\nAperte ENTER para voltar ao MENU PRINCIPAL");
                         Console.ReadKey();
                         break;
                     default:
                         Console.Clear();
-                        Console.Write("ATENÇÃO! Opção Inválida \nAperte ENTER para continuar");
+                        Console.WriteLine("\nATENÇÃO! Opção Inválida \nAperte ENTER para continuar");
                         Console.ReadKey();
                         break;
                 }
-            } while (opcaoMenuAjuda != 3);
+            } while (opc != 0);            
         }
+
+
+
 
         public static string[] CadastroDeEnunciadosDeQuestoesObjetivas(int QuestoesObjetivas)
         {
@@ -345,7 +383,7 @@ namespace ControleDeAvaliacao
                 for (int i = 0; i < QuestoesObjetivas; i++)
                 {
                     Console.Clear();
-                    Console.WriteLine("\n===== Cadastro de Questões Objetivas =====");
+                    Console.WriteLine("===== Cadastro de Questões Objetivas =====");
                     Console.WriteLine("\nDigite o enunciado das questão objetiva {0}: ", i);
                     int j = 0;
                     enunciadosObjetivas[i] = Console.ReadLine();
@@ -355,7 +393,7 @@ namespace ControleDeAvaliacao
             {
                 Console.Clear();
                 Console.WriteLine("===== Cadastro de Questões Objetivas =====");
-                Console.WriteLine("Não há questões objetivas para cadastro!");
+                Console.WriteLine("\nNão há questões objetivas para cadastro!");
             }
             return enunciadosObjetivas;
         }
@@ -378,7 +416,7 @@ namespace ControleDeAvaliacao
             {
                 Console.Clear();
                 Console.WriteLine("===== Cadastro de Questões Descritivas =====");
-                Console.WriteLine("Mão há questões descritivas para cadastro!");
+                Console.WriteLine("\nNão há questões descritivas para cadastro!");
             }
             return enunciadosDescritivas;
         }
@@ -395,15 +433,15 @@ namespace ControleDeAvaliacao
             letras[4] = 'E';
             for (int i = 0; i < QuestoesObjetivas; i++)
             {
-                
+
                 for (int j = 0; j < 5; j++)
                 {
                     Console.Clear();
                     Console.WriteLine("===== Cadastro de Alternativas =====");
-                    Console.WriteLine("Digite a descrição da alternativa {0}, da questão {1}: ", letras[j], i);
+                    Console.WriteLine("\nDigite a descrição da alternativa {0}, da questão {1}: ", letras[j], i);
                     alternativas[i] = Console.ReadLine();
                     todasAlternativas[i, j] = alternativas[i];
-                }               
+                }
             }
             return todasAlternativas;
         }
@@ -415,16 +453,20 @@ namespace ControleDeAvaliacao
             string[] alternativaCerta = new string[QuestoesObjetivas];
             string[] RespostaCertaDescritiva = new string[QuestoesDescritivas];
             string[] todasResposta = new string[QuestoesDescritivas + QuestoesObjetivas];
+
             for (int i = 0; i < QuestoesObjetivas; i++)
             {
-                Console.WriteLine("\n ----- Cadastro de respostas das questoes objetivas ----- ");
-                Console.WriteLine("Qual é a alternativa certa da questão {0}: ", i);
+                Console.Clear();
+                Console.WriteLine(" ----- Cadastro de Respostas das Questões Objetivas ----- ");
+                Console.WriteLine("\nQual é a alternativa certa da questão {0}: ", i);
                 alternativaCerta[i] = Console.ReadLine();
             }
+
             for (int i = 0; i < QuestoesDescritivas; i++)
             {
-                Console.WriteLine("\n ----- Cadastro das respostas das questoes descritivas ----");
-                Console.WriteLine("Digite a resposta descritiva certa da questão {0}: ", i);
+                Console.Clear();
+                Console.WriteLine(" ----- Cadastro das respostas das questoes descritivas ----");
+                Console.WriteLine("\nDigite a resposta descritiva certa da questão {0}: ", i);
                 RespostaCertaDescritiva[i] = Console.ReadLine();
             }
             for (int i = 0; i < QuestoesObjetivas; i++)
@@ -447,7 +489,7 @@ namespace ControleDeAvaliacao
 
         public static void ImprimiEnunciadoObjetivas(string[] array, string[,] array2)
         {
-            Console.WriteLine("enunciados objetivas");
+            Console.WriteLine("Enunciado das Questões Objetivas: ");
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine(array[i]);
@@ -468,17 +510,17 @@ namespace ControleDeAvaliacao
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                Console.WriteLine("alternativas da questão:{0}", i);
+                Console.WriteLine("Alternativas da questão:{0}", i);
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    Console.WriteLine("alternativa:{0}", letras[j]);
-                    Console.WriteLine(array[i, j]);
+                    Console.WriteLine("Alternativa {0}: ", letras[j]);
+                    Console.WriteLine("Alternativa correta: {0}", array[i, j]);
                 }
             }
         }
         public static void ImprimiEnunciadosDescritivas(string[] array)
         {
-            Console.WriteLine("enunciados descritivas");
+            Console.WriteLine("Enunciados das questões descritivas: ");
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine(array[i]);
@@ -491,38 +533,38 @@ namespace ControleDeAvaliacao
             if (tipo == 1)
             {
                 Console.Clear();
-                Console.WriteLine("Respostas Questões Objetivas:");
+                Console.WriteLine("----- Respostas Questões Objetivas -----");
                 for (int i = 0; i < QuestoesObjetivas; i++)
                 {
-                    Console.WriteLine("questao:{0}", i);
+                    Console.WriteLine("Questão {0}: ", i);
                     Console.WriteLine(array[i]);
                 }
             }
             if (tipo == 2)
             {
                 Console.Clear();
-                Console.WriteLine("respostas questoes descritivas:");
+                Console.WriteLine("----- Respostas Questões Descritivas -----");
                 for (int i = 0; i < QuestoesDescritivas; i++)
                 {
-                    Console.WriteLine("questao:{0}", i);
+                    Console.WriteLine("Questão {0}: ", i);
                     Console.WriteLine(array[i]);
                 }
             }
             if (tipo == 3)
             {
                 Console.Clear();
-                Console.WriteLine("respostas de todas as questoes:");
-                Console.WriteLine("respostas das questoes objetivas:");
+                Console.WriteLine("----- Respostas de todas as questões -----");
+                Console.WriteLine("\nRespostas das questões objetivas:");
                 for (int i = 0; i < QuestoesObjetivas; i++)
                 {
-                    Console.WriteLine("questao:{0}", i);
+                    Console.WriteLine("Questão {0}:", i);
                     Console.WriteLine(array[i]);
                 }
 
-                Console.WriteLine("respostas das questoes descritivas:");
+                Console.WriteLine("\nRespostas das questoes descritivas:");
                 for (int i = QuestoesObjetivas; i < TotalDeQuestoes; i++)
                 {
-                    Console.WriteLine("questao:{0}", i);
+                    Console.WriteLine("Questão {0}:", i);
                     Console.WriteLine(array[i]);
                 }
             }
@@ -549,13 +591,13 @@ namespace ControleDeAvaliacao
             Console.WriteLine("Pression ENTER para continuar: ");
 
         }
-        public static void EditarAlternativa(string[,] array, int posq,int posa)
+        public static void EditarAlternativa(string[,] array, int posq, int posa)
         {
 
             if (VerificaPosicao(posq))
             {
-                Console.WriteLine("Alternativa: {0}", array[posq,posa]);                
-                Console.WriteLine("AVISO: Alternativa alterada com sucesso! \nNova Alternativa correta: {0}", array[posq,posa]);
+                Console.WriteLine("Alternativa: {0}", array[posq, posa]);
+                Console.WriteLine("AVISO: Alternativa alterada com sucesso! \nNova Alternativa correta: {0}", array[posq, posa]);
             }
             else
             {
@@ -580,15 +622,15 @@ namespace ControleDeAvaliacao
 
         public static void RemoveEnunciado(int posicao, string[] array)
         {
-            
+
 
             if (!VerificaPosicao(posicao))
             {
                 Console.WriteLine("Posição inválida");
             }
-            
-                array[posicao] = null;
-            
+
+            array[posicao] = null;
+
 
             TotalDeQuestoes--;
         }
@@ -598,15 +640,15 @@ namespace ControleDeAvaliacao
             {
                 Console.WriteLine("Posição inválida");
             }
-            
 
-                array[posicao] = null;
-            
+
+            array[posicao] = null;
+
             TotalDeQuestoes--;
         }
 
         public static void GeraGabaritosDeProvasEstaticas()
-        {            
+        {
             string[] respostasProvaObjetiva = new string[10];
             string[] respostasProvaObjetiva2 = new string[10];
             string[] respostasProvaDescritiva = new string[10];
