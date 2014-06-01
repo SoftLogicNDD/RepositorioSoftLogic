@@ -240,7 +240,7 @@ namespace ControleDeAvaliacao
         public static int MostrarMenu()
         {
             Console.WriteLine("=========================== MENU ===========================");
-            Console.WriteLine("\n\n\n\n");
+            Console.WriteLine("\n\n");
             Console.WriteLine("1 - Cadastrar Prova (Opcional)");
             Console.WriteLine("2 - Gerar Gabarito");
             Console.WriteLine("3 - Imprimir Enunciados Objetivas");
@@ -254,7 +254,7 @@ namespace ControleDeAvaliacao
             Console.WriteLine("11 - Ajuda");
             Console.WriteLine("12 - Sobre");
             Console.WriteLine("0 - Encerrar o programa.");
-            Console.WriteLine("\n\n\n\n\n");
+            Console.WriteLine("\n\n\n\n");
             Console.Write("Informe a opção desejada: ");
             return int.Parse(Console.ReadLine());
         }
@@ -489,12 +489,24 @@ namespace ControleDeAvaliacao
 
         public static void ImprimirEnunciadoObjetivas(string[] array, string[,] array2)
         {
-            Console.WriteLine(" ===== Enunciado das Questões Objetivas =====");
-            for (int i = 0; i < array.Length; i++)
+            char[] letras = new char[5];
+            letras[0] = 'A';
+            letras[1] = 'B';
+            letras[2] = 'C';
+            letras[3] = 'D';
+            letras[4] = 'E';
+            Console.WriteLine(" ===== QUESTÕES OBJETIVAS =====\n");
+            for (int i = 0; i < array2.GetLength(0); i++)
             {
-                Console.WriteLine(array[i]);            
+                Console.WriteLine("Questão {0}: {1}", i, array[i]);
+                for (int j = 0; j < array2.GetLength(1); j++)
+                {
+                    Console.WriteLine("Alternativa {0}: {1}", letras[j], array2[i, j]);
+                }
+                Console.WriteLine(" ");
             }
-            ImprimirAlternativasQuestoesObjetivas(array2);
+            Console.WriteLine("Pressione ENTER para continuar: ");
+                    
         }
 
         public static void ImprimirAlternativasQuestoesObjetivas(string[,] array)
