@@ -23,34 +23,35 @@ namespace Lucas
             if (QuestoesObjetivas > 0)
             {
 
-                Console.WriteLine("\n===== Cadastro de Questões Objetivas =====");
+                
                 for (int i = 0; i < QuestoesObjetivas; i++)
                 {
+                    Console.Clear();
+                    Console.WriteLine("\n===== Cadastro de Questões Objetivas =====");
                     Console.WriteLine("\nDigite o enunciado das questão objetiva {0}: ", i);
                     int j = 0;
                     enunciadosObjetivas[i] = Console.ReadLine();
-
                 }
-
             }
             else
             {
                 Console.Clear();
-                Console.WriteLine("Mão há questões objetivas para cadastro!");
+                Console.WriteLine("===== Cadastro de Questões Objetivas =====");
+                Console.WriteLine("Não há questões objetivas para cadastro!");
             }
-
             return enunciadosObjetivas;
         }
+
         public static string[] CadastroDeEnunciadosDeQuestoesDescritivas(int QuestoesDescritivas)
         {
             string[] enunciadosDescritivas = new string[QuestoesDescritivas];
             if (QuestoesDescritivas > 0)
             {
-
-                Console.WriteLine("\n===== Cadastro de Questões Descritivas =====");
                 for (int i = 0; i < QuestoesDescritivas; i++)
                 {
-                    Console.WriteLine("\nDigite o enunciado das questão descritiva {0}: ", i);
+                    Console.Clear();
+                    Console.WriteLine("===== Cadastro de Questões Descritivas =====");
+                    Console.WriteLine("\nDigite o enunciado da questão descritiva {0}: ", i);
                     int j = 0;
                     enunciadosDescritivas[i] = Console.ReadLine();
                 }
@@ -58,18 +59,16 @@ namespace Lucas
             else
             {
                 Console.Clear();
-                Console.WriteLine("Mão há questões objetivas para cadastro!");
+                Console.WriteLine("===== Cadastro de Questões Descritivas =====");
+                Console.WriteLine("Mão há questões descritivas para cadastro!");
             }
-
             return enunciadosDescritivas;
         }
 
         public static string[,] CadastraAlternativasDaprova(int QuestoesObjetivas)
         {
-            Console.Clear();
             string[] alternativas = new string[QuestoesObjetivas];
             string[,] todasAlternativas = new string[QuestoesObjetivas, 5];
-            Console.WriteLine("===== Cadastro de Alternativas =====");
             char[] letras = new char[5];
             letras[0] = 'A';
             letras[1] = 'B';
@@ -78,32 +77,34 @@ namespace Lucas
             letras[4] = 'E';
             for (int i = 0; i < QuestoesObjetivas; i++)
             {
-
                 for (int j = 0; j < 5; j++)
                 {
+                    Console.WriteLine("===== Cadastro de Alternativas =====");
                     Console.WriteLine("Digite a descrição da alternativa {0}, da questão {1}: ", letras[j], i);
                     alternativas[i] = Console.ReadLine();
                     todasAlternativas[i, j] = alternativas[i];
                 }
+                Console.Clear();
             }
             return todasAlternativas;
         }
 
         public static string[] GerarGabarito(int QuestoesObjetivas, int QuestoesDescritivas)
         {
+            Console.Clear();
             Console.WriteLine("===== Gabarito =====");
             string[] alternativaCerta = new string[QuestoesObjetivas];
             string[] RespostaCertaDescritiva = new string[QuestoesDescritivas];
             string[] todasResposta = new string[QuestoesDescritivas + QuestoesObjetivas];
             for (int i = 0; i < QuestoesObjetivas; i++)
             {
-                Console.WriteLine("cadastro de respostas das questoes objetivas");
+                Console.WriteLine("Cadastro de respostas das questoes objetivas");
                 Console.WriteLine("Qual é a alternativa certa da questão {0}: ", i);
                 alternativaCerta[i] = Console.ReadLine();
             }
             for (int i = 0; i < QuestoesDescritivas; i++)
             {
-                Console.WriteLine("cadastro das respostas das questoes descritivas");
+                Console.WriteLine("Cadastro das respostas das questoes descritivas");
                 Console.WriteLine("Digite a resposta descritiva certa da questão {0}: ", i);
                 RespostaCertaDescritiva[i] = Console.ReadLine();
             }
@@ -230,18 +231,41 @@ namespace Lucas
             }
         }
 
-        public static void ImprimiEnunciadoObjetivas(string[] array, string[,] array2)
+        public static void ImprimirEnunciadoObjetivas(string[] array, string[,] array2)
         {
-            Console.WriteLine("enunciados objetivas");
-            for (int i = 0; i < array.Length; i++)
+            char[] letras = new char[5];
+            letras[0] = 'A';
+            letras[1] = 'B';
+            letras[2] = 'C';
+            letras[3] = 'D';
+            letras[4] = 'E';
+            Console.WriteLine(" ===== QUESTÕES OBJETIVAS =====\n");
+            for (int i = 0; i < array2.GetLength(0); i++)
             {
-                Console.WriteLine(array[i]);
+                Console.WriteLine("Questão {0}: {1}", i, array[i]);
+                for (int j = 0; j < array2.GetLength(1); j++)
+                {
+                    if (array2[i, 0] == null)
+                    {
+                        Console.WriteLine("questão:{0} deletada", i);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Alternativa {0}: {1}", letras[j], array2[i, j]);
+                    }
 
+
+
+                }
+                Console.WriteLine(" ");
             }
-            ImprimiAlternativasQuestoesObjetivas(array2);
-        }
 
-        public static void ImprimiAlternativasQuestoesObjetivas(string[,] array)
+
+            Console.WriteLine("Pressione ENTER para continuar: ");
+
+        }
+        public static void ImprimirAlternativasQuestoesObjetivas(string[,] array)
         {
 
             char[] letras = new char[5];
@@ -253,20 +277,26 @@ namespace Lucas
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                Console.WriteLine("alternativas da questão:{0}", i);
+
+
+                Console.WriteLine("Alternativas da questão:{0}", i);
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    Console.WriteLine("alternativa:{0}", letras[j]);
-                    Console.WriteLine(array[i, j]);
+
+
+                    Console.WriteLine("Alternativa :{0} {1}", letras[j], array[i, j]);
+
+
+
                 }
             }
         }
+        
         public static void ImprimiEnunciadosDescritivas(string[] array)
         {
             Console.WriteLine("enunciados descritivas");
             for (int i = 0; i < array.Length; i++)
             {
-
                 Console.WriteLine(array[i]);
             }
 
@@ -278,7 +308,7 @@ namespace Lucas
             if (tipo == 1)
             {
                 Console.Clear();
-                Console.WriteLine("respostas questoes Objetivas:");
+                Console.WriteLine("Respostas Questões Objetivas:");
                 for (int i = 0; i < QuestoesObjetivas; i++)
                 {
                     Console.WriteLine("questao:{0}", i);
@@ -311,10 +341,30 @@ namespace Lucas
                 {
                     Console.WriteLine("questao:{0}", i);
                     Console.WriteLine(array[i]);
-
                 }
             }
+        }
 
+       
+        public static void RemoveResposta(int posicao, string[] array)
+        {
+            if (!VerificaPosicao(posicao))
+            {
+                Console.WriteLine("Posição inválida");
+
+                }
+            for (int i = posicao; i < TotalDeQuestoes - 1; i++)
+            {
+
+                array[i] = array[i + 1];
+            }
+            TotalDeQuestoes--;
+        }
+
+
+        public static bool VerificaPosicao(int posicao)
+        {
+            return posicao >= 0 && posicao <= TotalDeQuestoes;
         }
 
         public void RemoveEnunciado(int posicao,string []array)
@@ -330,35 +380,48 @@ namespace Lucas
             }
            TotalDeQuestoes--;
         }
-        public void RemoveResposta(int posicao, string[] array)
+        public static void RemoveEnunciado(int posicao, string[] array, string[,] alternativas)
         {
             if (!VerificaPosicao(posicao))
             {
                 Console.WriteLine("Posição inválida");
-
             }
-            for (int i = posicao; i < TotalDeQuestoes - 1; i++)
+            array[posicao] = null;
+
+            for (int j = 0; j < alternativas.GetLength(1); j++)
             {
-
-                array[i] = array[i + 1];
+                alternativas[posicao, j] = null;
             }
+
+
+
             TotalDeQuestoes--;
+            Console.WriteLine("Aperte ENTER para continuar: ");
         }
 
 
-        public static bool VerificaPosicao(int posicao)
-        {
-            return posicao >= 0 && posicao <= TotalDeQuestoes;
-        }
 
+      
         public static void EditarEnunciado(string[] array, int pos)
         {
             if (VerificaPosicao(pos))
             {
+                Console.WriteLine("Enunciado antigo: {0}", array[pos]);
+                Console.WriteLine("Informe o enunciado novo: ");
                 array[pos] = Console.ReadLine();
+                Console.WriteLine("Novo Enunciado: {0}", array[pos]);
             }
-            
+            else
+            {
+                Console.WriteLine("ATENÇÃO: Posição é inválida!");
+            }
+
         }
+        public static bool VerificaPosicao(string[] array, int posicao)
+        {
+            return array[posicao] == null;
+        }
+
         public static void EditarAlternativa(string[] array, int pos)
         {
             if (VerificaPosicao(pos))
@@ -371,47 +434,13 @@ namespace Lucas
         {
             if (VerificaPosicao(pos))
             {
-                array[pos] = Console.ReadLine();
-            }
-
+            array[pos] = Console.ReadLine();
+        }
         }
 
-        public static string[,] alternativas;
-        static void Main(string[] args)
-        {
-            Console.WriteLine(" ========== CADASTRO ==========\n");
-            Console.Write("Informe a quantidade de questões descritivas: ");
-            QuestoesDescritivas = int.Parse(Console.ReadLine());
-            Console.Write("Informe a quantidade de questões objetivas: ");
-            QuestoesObjetivas = int.Parse(Console.ReadLine());
-            TotalDeQuestoes = QuestoesDescritivas + QuestoesObjetivas;
-            string[] EnunciadosObjetivas = CadastroDeEnunciadosDeQuestoesObjetivas(QuestoesObjetivas);
+        
 
-
-            if (QuestoesObjetivas > 0)
-            {
-                alternativas = CadastraAlternativasDaprova(QuestoesObjetivas);
-            }
-
-            string[] EnunciadosDescritivas = CadastroDeEnunciadosDeQuestoesDescritivas(QuestoesDescritivas);
-            string[] gabarito = GerarGabarito(QuestoesObjetivas, QuestoesDescritivas);
-            int codigo = 0;
-            if (QuestoesDescritivas > 0 && QuestoesObjetivas > 0)
-            {
-                codigo = 3;
-            }
-            if (QuestoesDescritivas > 0 && QuestoesObjetivas == 0)
-            {
-                codigo = 2;
-            }
-            if (QuestoesDescritivas == 0 && QuestoesObjetivas > 0)
-            {
-                codigo = 1;
-            }
-            ImprimirGabarito(gabarito, codigo);
-            ImprimiEnunciadoObjetivas(EnunciadosObjetivas, alternativas);
-            ImprimiEnunciadosDescritivas(EnunciadosDescritivas);
-            Console.ReadKey();
-        }
+       
     }
+
 }
