@@ -8,8 +8,8 @@ namespace ControleDeAvaliacao
 {
     class Program
     {
-        public static string User = "Thiago";
-        public static string Senha = "thiago123";
+        public static string User = "";
+        public static string Senha = "";
         public static int OpcaoMenu;
         public static int QuestoesObjetivas;
         public static int QuestoesDescritivas;
@@ -527,11 +527,7 @@ namespace ControleDeAvaliacao
                 todasResposta[i] = RespostaCertaDescritiva[count];
                 count++;
             }
-            for (int i = 0; i < TotalDeQuestoes; i++)
-            {
-                Console.WriteLine(" ========== GABARITO =========\n");
-                Console.WriteLine(todasResposta[i]);
-            }
+           
             return todasResposta;
         }
 
