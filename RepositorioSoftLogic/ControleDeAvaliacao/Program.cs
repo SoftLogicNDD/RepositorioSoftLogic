@@ -545,10 +545,23 @@ namespace ControleDeAvaliacao
                 Console.WriteLine("Questão {0}: {1}", i, array[i]);
                 for (int j = 0; j < array2.GetLength(1); j++)
             {
-                    Console.WriteLine("Alternativa {0}: {1}", letras[j], array2[i, j]);
+                if (array2[i,0]==null)
+                {
+                    Console.WriteLine("questão:{0} deletada",i);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Alternativa {0}: {1}", letras[j], array2[i, j]);  
+                }
+
+
+                  
                 }
                 Console.WriteLine(" ");
             }
+            
+            
             Console.WriteLine("Pressione ENTER para continuar: ");
 
             }
@@ -570,16 +583,10 @@ namespace ControleDeAvaliacao
                 Console.WriteLine("Alternativas da questão:{0}", i);
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    if (array[i,j]==null)
-                    {
-                        Console.WriteLine("questão:{0} foi deletada",i);
-                        break;
-                        
-                    }
-                    else
-                    {
-                        Console.WriteLine("Alternativa :{0} {1}", letras[j], array[i, j]);     
-                    }
+                    
+                    
+                 Console.WriteLine("Alternativa :{0} {1}", letras[j], array[i, j]);     
+                    
                    
                     
                 }
