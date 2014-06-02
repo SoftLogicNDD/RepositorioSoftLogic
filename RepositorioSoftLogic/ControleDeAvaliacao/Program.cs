@@ -106,6 +106,7 @@ namespace ControleDeAvaliacao
                             break;
                         case 3:
                             Console.Clear();
+                            Console.WriteLine(" ===== REMOVER ENUNCIADOS OBJETIVAS ===== \n");
                             if (QuestoesObjetivas > 0)
                             {
                                 ImprimirEnunciadoObjetivas(EnunciadosObjetivas, Alternativas);
@@ -118,6 +119,7 @@ namespace ControleDeAvaliacao
                             break;
                         case 4:
                             Console.Clear();
+                            Console.WriteLine(" ===== REMOVER ENUNCIADOS DESCRITIVAS ===== \n");
                             if (QuestoesDescritivas > 0)
                             {
                                 ImprimirEnunciadosDescritivas(EnunciadosDescritivas);
@@ -132,7 +134,7 @@ namespace ControleDeAvaliacao
                             Console.Clear();
                             if (Gabarito == null)
                             {
-                                Console.WriteLine("O gabarito Para Esta Prova Não está cadastrado,\n volte para o menu principal e aperte 2 para gerar o Gabarito");
+                                Console.WriteLine("O gabarito para esta prova ainda não está cadastrado,\n Voltar para o menu principal e aperte 2 para gerar o Gabarito");
                                 Console.ReadKey();
                             }
                             else
