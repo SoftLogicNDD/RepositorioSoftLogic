@@ -106,7 +106,6 @@ namespace ControleDeAvaliacao
                             break;
                         case 3:
                             Console.Clear();
-                            Console.WriteLine(" ===== REMOVER ENUNCIADOS OBJETIVAS ===== \n");
                             if (QuestoesObjetivas > 0)
                             {
                                 ImprimirEnunciadoObjetivas(EnunciadosObjetivas, Alternativas);
@@ -119,7 +118,6 @@ namespace ControleDeAvaliacao
                             break;
                         case 4:
                             Console.Clear();
-                            Console.WriteLine(" ===== REMOVER ENUNCIADOS DESCRITIVAS ===== \n");
                             if (QuestoesDescritivas > 0)
                             {
                                 ImprimirEnunciadosDescritivas(EnunciadosDescritivas);
