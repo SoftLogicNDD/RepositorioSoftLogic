@@ -120,7 +120,7 @@ namespace ControleDeAvaliacao
                             Console.Clear();
                             if (QuestoesDescritivas > 0)
                             {
-                                ImprimiEnunciadosDescritivas(EnunciadosDescritivas);
+                                ImprimirEnunciadosDescritivas(EnunciadosDescritivas);
                             }
                             if (QuestoesDescritivas == 0)
                             {
@@ -130,68 +130,68 @@ namespace ControleDeAvaliacao
                             break;
                         case 5:
                             Console.Clear();
-                            if (Gabarito==null)
+                            if (Gabarito == null)
                             {
                                 Console.WriteLine("O gabarito Para Esta Prova Não está cadastrado,\n volte para o menu principal e aperte 2 para gerar o Gabarito");
                                 Console.ReadKey();
                             }
                             else
                             {
-                            ImprimirGabarito(Gabarito, Codigo);
-                            Console.WriteLine("Pressione ENTER para continuar: ");
-                            Console.ReadKey();
+                                ImprimirGabarito(Gabarito, Codigo);
+                                Console.WriteLine("Pressione ENTER para continuar: ");
+                                Console.ReadKey();
                             }
-                           
+
                             break;
                         case 6:
                             Console.Clear();
-                            if (QuestoesObjetivas==0)
+                            if (QuestoesObjetivas == 0)
                             {
                                 Console.WriteLine("ATENÇÃO: não há questões objetivas disponiveis para serem editadas");
                             }
                             else
                             {
-                            Console.WriteLine("Informe o número da questão: ");
-                            posicao = int.Parse(Console.ReadLine());
-                                if (!VerificaPosicao(EnunciadosObjetivas,posicao))
-                                {
-                            EditarEnunciado(EnunciadosObjetivas, posicao);
-                            Console.WriteLine("Deseja alterar a resposta de alguma questão(S/N): ");
-                            string cont = Console.ReadLine();
-                            if (cont.ToUpper() == "S")
-                            {
                                 Console.WriteLine("Informe o número da questão: ");
                                 posicao = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Informe a nova resposta: ");
-                                string alternativa = Console.ReadLine();
-                                switch (alternativa.ToUpper())
+                                if (!VerificaPosicao(EnunciadosObjetivas, posicao))
                                 {
-                                    case "A":
-                                        EditarAlternativa(Alternativas, posicao, 0);
-                                        break;
-                                    case "B":
-                                        EditarAlternativa(Alternativas, posicao, 1);
-                                        break;
-                                    case "C":
-                                        EditarAlternativa(Alternativas, posicao, 2);
-                                        break;
-                                    case "D":
-                                        EditarAlternativa(Alternativas, posicao, 3);
-                                        break;
-                                    case "E":
-                                        EditarAlternativa(Alternativas, posicao, 4);
-                                        break;
-                                }
-                            }
+                                    EditarEnunciado(EnunciadosObjetivas, posicao);
+                                    Console.WriteLine("Deseja alterar a resposta de alguma questão(S/N): ");
+                                    string cont = Console.ReadLine();
+                                    if (cont.ToUpper() == "S")
+                                    {
+                                        Console.WriteLine("Informe o número da questão: ");
+                                        posicao = int.Parse(Console.ReadLine());
+                                        Console.WriteLine("Informe a nova resposta: ");
+                                        string alternativa = Console.ReadLine();
+                                        switch (alternativa.ToUpper())
+                                        {
+                                            case "A":
+                                                EditarAlternativa(Alternativas, posicao, 0);
+                                                break;
+                                            case "B":
+                                                EditarAlternativa(Alternativas, posicao, 1);
+                                                break;
+                                            case "C":
+                                                EditarAlternativa(Alternativas, posicao, 2);
+                                                break;
+                                            case "D":
+                                                EditarAlternativa(Alternativas, posicao, 3);
+                                                break;
+                                            case "E":
+                                                EditarAlternativa(Alternativas, posicao, 4);
+                                                break;
+                                        }
+                                    }
                                 }
                                 else
                                 {
                                     Console.WriteLine("ATENÇÃO: posição vazia!");
-                            Console.ReadKey();
+                                    Console.ReadKey();
                                 }
-                                
+
                             }
-                           
+
                             Console.ReadKey();
                             break;
                         case 7:
@@ -203,28 +203,28 @@ namespace ControleDeAvaliacao
                             }
                             else
                             {
-                            Console.WriteLine("Informe o número da questão: ");
-                            posicao = int.Parse(Console.ReadLine());
+                                Console.WriteLine("Informe o número da questão: ");
+                                posicao = int.Parse(Console.ReadLine());
                                 if (!VerificaPosicao(EnunciadosDescritivas, posicao))
                                 {
 
-                            EditarEnunciado(EnunciadosDescritivas, posicao);
-                            Console.WriteLine("Deseja alterar a resposta da questão(S/N): ");
-                            string opc = Console.ReadLine();
-                            if (opc.ToUpper() == "S")
-                            {
-                                EditarResposta(Gabarito, posicao);
-                            }
-                            Console.ReadKey();
+                                    EditarEnunciado(EnunciadosDescritivas, posicao);
+                                    Console.WriteLine("Deseja alterar a resposta da questão(S/N): ");
+                                    string opc = Console.ReadLine();
+                                    if (opc.ToUpper() == "S")
+                                    {
+                                        EditarResposta(Gabarito, posicao);
+                                    }
+                                    Console.ReadKey();
                                 }
                                 else
                                 {
                                     Console.WriteLine("ATENÇÃO:posição vazia!");
                                     Console.ReadKey();
-                                }     
+                                }
                             }
-                           
-                           
+
+
                             break;
                         case 8:
                             Console.Clear();
@@ -247,7 +247,7 @@ namespace ControleDeAvaliacao
                             {
                                 Console.WriteLine("Informe o número da questão: ");
                                 posicao = int.Parse(Console.ReadLine());
-                                RemoveEnunciado(posicao, EnunciadosObjetivas,Alternativas);
+                                RemoveEnunciado(posicao, EnunciadosObjetivas, Alternativas);
                                 Console.ReadKey();
                             }
                             else
@@ -353,7 +353,7 @@ namespace ControleDeAvaliacao
                 Console.WriteLine("10 - EXIBIR EXEMPLO DE PROVAS");
                 Console.WriteLine("0 - RETORNAR AO MENU PRINCIPAL");
                 Console.WriteLine("\n\nInforme a opção que deseja: ");
-                opc = Convert.ToInt32(Console.ReadLine());                
+                opc = Convert.ToInt32(Console.ReadLine());
                 switch (opc)
                 {
                     case 1:
@@ -416,7 +416,7 @@ namespace ControleDeAvaliacao
                         Console.ReadKey();
                         break;
                 }
-            } while (opc != 0);            
+            } while (opc != 0);
         }
 
 
@@ -527,7 +527,7 @@ namespace ControleDeAvaliacao
                 todasResposta[i] = RespostaCertaDescritiva[count];
                 count++;
             }
-           
+
             return todasResposta;
         }
 
@@ -541,30 +541,30 @@ namespace ControleDeAvaliacao
             letras[4] = 'E';
             Console.WriteLine(" ===== QUESTÕES OBJETIVAS =====\n");
             for (int i = 0; i < array2.GetLength(0); i++)
-        {
+            {
                 Console.WriteLine("Questão {0}: {1}", i, array[i]);
                 for (int j = 0; j < array2.GetLength(1); j++)
-            {
-                if (array2[i,0]==null)
                 {
-                    Console.WriteLine("questão:{0} deletada",i);
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Alternativa {0}: {1}", letras[j], array2[i, j]);  
-                }
+                    if (array2[i, 0] == null)
+                    {
+                        Console.WriteLine("questão:{0} deletada", i);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Alternativa {0}: {1}", letras[j], array2[i, j]);
+                    }
 
 
-                  
+
                 }
                 Console.WriteLine(" ");
             }
-            
-            
+
+
             Console.WriteLine("Pressione ENTER para continuar: ");
 
-            }
+        }
 
         public static void ImprimirAlternativasQuestoesObjetivas(string[,] array)
         {
@@ -578,27 +578,27 @@ namespace ControleDeAvaliacao
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
-               
+
 
                 Console.WriteLine("Alternativas da questão:{0}", i);
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    
-                    
-                 Console.WriteLine("Alternativa :{0} {1}", letras[j], array[i, j]);     
-                    
-                   
-                    
+
+
+                    Console.WriteLine("Alternativa :{0} {1}", letras[j], array[i, j]);
+
+
+
                 }
             }
         }
 
-        public static void ImprimiEnunciadosDescritivas(string[] array)
+        public static void ImprimirEnunciadosDescritivas(string[] array)
         {
-            Console.WriteLine("Enunciados das questões descritivas: ");
+            Console.WriteLine("====== Enunciados das questões descritivas =====");
             for (int i = 0; i < array.Length; i++)
             {
-                Console.WriteLine(array[i]);
+                Console.WriteLine("Questão {0}: {1}", i, array[i]);
             }
         }
 
@@ -678,6 +678,8 @@ namespace ControleDeAvaliacao
             {
                 Console.WriteLine("ATENÇÃO: Posição é inválida!");
             }
+            Console.WriteLine("Pression ENTER para continuar: ");
+            Console.ReadKey();
         }
         public static void EditarResposta(string[] array, int pos)
         {
@@ -701,25 +703,31 @@ namespace ControleDeAvaliacao
             {
                 Console.WriteLine("Posição inválida");
             }
+            else
+            {
+                Console.WriteLine("Enunciado foi removido!");
+            }
             array[posicao] = null;
             TotalDeQuestoes--;
             Console.WriteLine("Aperte ENTER para continuar: ");
         }
-        public static void RemoveEnunciado(int posicao, string[] array,string [,]alternativas)
+
+        public static void RemoveEnunciado(int posicao, string[] array, string[,] alternativas)
         {
             if (!VerificaPosicao(posicao))
             {
                 Console.WriteLine("Posição inválida");
             }
+            else
+            {
+                Console.WriteLine("Enunciado e as alternativas foram removidos!");
+            }
             array[posicao] = null;
-            
-                for (int j = 0; j < alternativas.GetLength(1); j++)
-                {
-                    alternativas[posicao, j] = null;
-                }
-          
 
-
+            for (int j = 0; j < alternativas.GetLength(1); j++)
+            {
+                alternativas[posicao, j] = null;
+            }
             TotalDeQuestoes--;
             Console.WriteLine("Aperte ENTER para continuar: ");
         }
@@ -731,12 +739,16 @@ namespace ControleDeAvaliacao
             {
                 Console.WriteLine("Posição inválida");
             }
+            else
+            {
+                Console.WriteLine("Resposta foi removida com sucesso!");
+            }
             array[posicao] = null;
             TotalDeQuestoes--;
-           
+
         }
 
-        public static bool VerificaPosicao(string []array,int posicao)
+        public static bool VerificaPosicao(string[] array, int posicao)
         {
             return array[posicao] == null;
         }
