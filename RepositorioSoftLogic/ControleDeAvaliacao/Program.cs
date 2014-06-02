@@ -200,7 +200,7 @@ namespace ControleDeAvaliacao
                             Console.Clear();
                             if (QuestoesDescritivas == 0)
                             {
-                                Console.WriteLine("não há questoes descritivas cadastradas!");
+                                Console.WriteLine("Não há questoes descritivas cadastradas!");
                                 Console.ReadKey();
                             }
                             else
@@ -600,7 +600,14 @@ namespace ControleDeAvaliacao
             Console.WriteLine("====== Enunciados das questões descritivas =====");
             for (int i = 0; i < array.Length; i++)
             {
+                if(array[i] !=null)
                 Console.WriteLine("Questão {0}: {1}", i, array[i]);
+                else
+                {
+                    Console.WriteLine("Questão {0}: DELETADA", i);
+                    break;
+                }
+                    
             }
         }
 
@@ -752,7 +759,7 @@ namespace ControleDeAvaliacao
 
         public static bool VerificaPosicao(string[] array, int posicao)
         {
-            return array[posicao] == null;
+            return array[posicao] == null && posicao > TotalDeQuestoes;
         }
 
         public static void GeraGabaritosDeProvasEstaticas()
